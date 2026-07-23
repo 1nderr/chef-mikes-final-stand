@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cwwfm4t5qrv4v"]
+
+[ext_resource type="Script" uid="uid://des8vm88csqgp" path="res://src/entities/gun/aim_line.gd" id="1_uyqb0"]
+
+[node name="AimLine" type="Line2D" unique_id=381144997]
+width = 2.0
+default_color = Color(0.7860494, 0, 0.20763028, 1)
+script = ExtResource("1_uyqb0")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1807259462]
+collision_mask = 0
