@@ -1,18 +1,22 @@
 [gd_scene format=3 uid="uid://dhlh0fe0111xw"]
 
-[ext_resource type="Texture2D" uid="uid://doylh1ggiaxri" path="res://icon.svg" id="1_4m8ck"]
 [ext_resource type="Script" uid="uid://cluuulpuqt5ht" path="res://src/entities/player/player.gd" id="1_muk8e"]
 [ext_resource type="PackedScene" uid="uid://cwwfm4t5qrv4v" path="res://src/entities/weapons/aim_line.tscn" id="1_vt6n5"]
 [ext_resource type="PackedScene" uid="uid://dxj77fhnyeg1t" path="res://src/entities/weapons/bullet.tscn" id="2_wrxq6"]
 [ext_resource type="PackedScene" uid="uid://d2dl27hml1ywm" path="res://src/entities/weapons/bomb.tscn" id="3_oih67"]
+[ext_resource type="Texture2D" uid="uid://tvswelausylq" path="res://assets/chef.png" id="4_oih67"]
 [ext_resource type="Script" uid="uid://k8yocm51qn8r" path="res://src/components/hurtbox_component.gd" id="5_0mfjg"]
 [ext_resource type="Script" uid="uid://cdml4ejpp07ir" path="res://src/components/health_component.gd" id="6_oih67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb65w"]
+atlas = ExtResource("4_oih67")
+region = Rect2(0, 0, 16, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sn2t0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4m8ck")
+"texture": SubResource("AtlasTexture_eb65w")
 }],
 "loop": 0,
 "name": &"default",
@@ -20,7 +24,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn2t0"]
-size = Vector2(28, 28)
+size = Vector2(10, 12)
 
 [node name="Player" type="Node2D" unique_id=1572185499 groups=["player"]]
 z_index = 2
@@ -29,7 +33,6 @@ bullet_scene = ExtResource("2_wrxq6")
 bomb_scene = ExtResource("3_oih67")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=497497303]
-scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_sn2t0")
 autoplay = "default"
 
@@ -41,11 +44,12 @@ collision_mask = 0
 script = ExtResource("5_0mfjg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2084262555]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_sn2t0")
 debug_color = Color(0.114793606, 0.6490636, 0, 0.41960785)
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=443058346]
-wait_time = 0.1
+wait_time = 0.25
 one_shot = true
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1277235068]

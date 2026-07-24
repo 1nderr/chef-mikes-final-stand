@@ -1,16 +1,32 @@
 [gd_scene format=3 uid="uid://bbjyd6vwadc07"]
 
 [ext_resource type="Script" uid="uid://gq5mvkfr8dag" path="res://src/entities/microwave/microwave.gd" id="1_26k0w"]
-[ext_resource type="Texture2D" uid="uid://doylh1ggiaxri" path="res://icon.svg" id="1_qm4rb"]
+[ext_resource type="Texture2D" uid="uid://jqhloiy1iq61" path="res://assets/microwave.png" id="2_h2un8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2un8"]
+atlas = ExtResource("2_h2un8")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38xgv"]
+atlas = ExtResource("2_h2un8")
+region = Rect2(32, 0, 32, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sn2t0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_qm4rb")
+"texture": SubResource("AtlasTexture_h2un8")
 }],
 "loop": 0,
-"name": &"default",
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38xgv")
+}],
+"loop": 0,
+"name": &"on",
 "speed": 5.0
 }]
 
@@ -18,10 +34,9 @@ animations = [{
 script = ExtResource("1_26k0w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2095432198]
-modulate = Color(0.7529412, 0.7372549, 0, 1)
-scale = Vector2(1, 0.5)
 sprite_frames = SubResource("SpriteFrames_sn2t0")
-autoplay = "default"
+animation = &"on"
+autoplay = "off"
 
 [node name="Timer" type="Timer" parent="." unique_id=1098042126]
 one_shot = true

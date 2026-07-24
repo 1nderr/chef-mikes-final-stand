@@ -1,18 +1,22 @@
 [gd_scene format=3 uid="uid://c3aqbvkprra7g"]
 
-[ext_resource type="Texture2D" uid="uid://doylh1ggiaxri" path="res://icon.svg" id="1_toqcl"]
 [ext_resource type="Script" uid="uid://bqic8sqg4gmla" path="res://src/entities/enemy/enemy.gd" id="1_vg1v2"]
+[ext_resource type="Texture2D" uid="uid://tvswelausylq" path="res://assets/chef.png" id="2_yu70o"]
 [ext_resource type="Script" uid="uid://k8yocm51qn8r" path="res://src/components/hurtbox_component.gd" id="3_w1tau"]
 [ext_resource type="Script" uid="uid://cpcfjc7p1nry1" path="res://src/components/hitbox_component.gd" id="3_yu70o"]
 [ext_resource type="Script" uid="uid://cdml4ejpp07ir" path="res://src/components/health_component.gd" id="4_yu70o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn2t0"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6j3k"]
+atlas = ExtResource("2_yu70o")
+region = Rect2(16, 0, 16, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_sn2t0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_toqcl")
+"texture": SubResource("AtlasTexture_y6j3k")
 }],
 "loop": 0,
 "name": &"default",
@@ -20,13 +24,12 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8n0i7"]
-size = Vector2(28, 30)
+size = Vector2(13, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_215gw"]
-size = Vector2(28, 30)
+size = Vector2(13, 24)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=727386105]
-modulate = Color(1, 0.14509805, 0, 1)
 script = ExtResource("1_vg1v2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1274518723]
@@ -34,7 +37,6 @@ shape = SubResource("RectangleShape2D_sn2t0")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=263323871]
-scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_sn2t0")
 autoplay = "default"
 
@@ -44,6 +46,7 @@ collision_mask = 2
 script = ExtResource("3_yu70o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=393809733]
+position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_8n0i7")
 debug_color = Color(0.9947894, 0, 0.22385535, 0.41960785)
 
@@ -53,6 +56,7 @@ collision_mask = 0
 script = ExtResource("3_w1tau")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1407879727]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_215gw")
 debug_color = Color(0, 0.64757454, 0.200324, 0.41960785)
 

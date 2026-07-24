@@ -24,8 +24,8 @@ SignalBus="*uid://nnq3e388gxoy"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=256
+window/size/viewport_height=224
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

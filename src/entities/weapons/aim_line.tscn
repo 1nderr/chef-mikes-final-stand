@@ -4,8 +4,8 @@
 
 [node name="AimLine" type="Line2D" unique_id=381144997]
 z_index = -1
-width = 2.0
-default_color = Color(0.7860494, 0, 0.20763028, 1)
+width = 1.0
+default_color = Color(0.78431374, 0, 0.20784314, 0.47058824)
 script = ExtResource("1_j2ul4")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1807259462]

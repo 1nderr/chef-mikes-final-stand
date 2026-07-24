@@ -13,35 +13,39 @@
 process_mode = 1
 
 [node name="Player" parent="EntitiesRoot" unique_id=1572185499 instance=ExtResource("1_avv2o")]
-position = Vector2(0, -97)
+position = Vector2(0, -85)
 
 [node name="Microwave" parent="EntitiesRoot" unique_id=679489552 instance=ExtResource("2_x62ka")]
-position = Vector2(0, -146)
+position = Vector2(0, -100)
 
 [node name="Spawners" type="Node2D" parent="." unique_id=179981587]
 
 [node name="EnemySpawner" parent="Spawners" unique_id=737043293 instance=ExtResource("4_x62ka")]
-position = Vector2(-364, 108)
+position = Vector2(-153, 99)
 
 [node name="EnemySpawner3" parent="Spawners" unique_id=1104723305 instance=ExtResource("4_x62ka")]
-position = Vector2(365, 127)
+position = Vector2(154, 90)
 
 [node name="EnemySpawner4" parent="Spawners" unique_id=115077522 instance=ExtResource("4_x62ka")]
-position = Vector2(313, 211)
+position = Vector2(139, 128)
 
 [node name="EnemySpawner5" parent="Spawners" unique_id=933139979 instance=ExtResource("4_x62ka")]
-position = Vector2(174, 216)
+position = Vector2(68, 128)
 
 [node name="EnemySpawner6" parent="Spawners" unique_id=2043926692 instance=ExtResource("4_x62ka")]
-position = Vector2(4, 211)
+position = Vector2(0, 126)
 
 [node name="EnemySpawner7" parent="Spawners" unique_id=1350587417 instance=ExtResource("4_x62ka")]
-position = Vector2(-164, 208)
+position = Vector2(-56, 134)
 
 [node name="EnemySpawner8" parent="Spawners" unique_id=1550754081 instance=ExtResource("4_x62ka")]
-position = Vector2(-331, 196)
+position = Vector2(-119, 130)
 
 [node name="MicrowaveScreen" type="CanvasLayer" parent="." unique_id=475046930]
 process_mode = 2
 
 [node name="MicrowavePanel" parent="MicrowaveScreen" unique_id=1287453966 instance=ExtResource("3_ivtyw")]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 1.0
