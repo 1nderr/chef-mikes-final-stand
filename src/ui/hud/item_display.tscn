@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://yar6d7ip6te"]
+
+[ext_resource type="Texture2D" uid="uid://d3c1qfmwyriga" path="res://assets/pizza.png" id="1_bhrj7"]
+[ext_resource type="Script" uid="uid://c01vdmp8nc278" path="res://src/ui/hud/item_display.gd" id="1_d2nav"]
+[ext_resource type="Texture2D" uid="uid://cift7ec0kr5kv" path="res://assets/popcorn.png" id="2_efraj"]
+[ext_resource type="Texture2D" uid="uid://dmfi7cypjrfi2" path="res://assets/icecream.png" id="3_d2nav"]
+[ext_resource type="FontFile" uid="uid://dpebm1j1mxeda" path="res://assets/Kenney Future Narrow.ttf" id="4_efraj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d2nav"]
+font = ExtResource("4_efraj")
+font_size = 6
+
+[node name="Item Display" type="Control" unique_id=872636647]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 53.0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_d2nav")
+
+[node name="ItemTextures" type="VBoxContainer" parent="." unique_id=1926366997]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -8.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="ItemTextures" unique_id=1533747352]
+layout_mode = 2
+texture = ExtResource("1_bhrj7")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="ItemTextures" unique_id=201178654]
+layout_mode = 2
+texture = ExtResource("2_efraj")
+stretch_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="ItemTextures" unique_id=933169371]
+layout_mode = 2
+texture = ExtResource("3_d2nav")
+stretch_mode = 3
+
+[node name="Counts" type="VBoxContainer" parent="." unique_id=632896517]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = 62.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Counts" unique_id=2105174656]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_d2nav")
+
+[node name="Label2" type="Label" parent="Counts" unique_id=175350089]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_d2nav")
+
+[node name="Label3" type="Label" parent="Counts" unique_id=1369747806]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_d2nav")

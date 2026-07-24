@@ -42,6 +42,7 @@ offset_right = 177.0
 offset_bottom = 152.0
 scale = Vector2(0.9, 0.9)
 texture_normal = ExtResource("3_q23e7")
+script = ExtResource("2_qmtpd")
 
 [node name="PopcornButton" type="TextureButton" parent="." unique_id=2060831370]
 layout_mode = 0
@@ -52,6 +53,7 @@ offset_bottom = 150.0
 texture_normal = ExtResource("3_qmtpd")
 script = ExtResource("2_qmtpd")
 item = 1
+wait_time = 15.0
 
 [node name="IcecreamButton" type="TextureButton" parent="." unique_id=553621291]
 layout_mode = 0

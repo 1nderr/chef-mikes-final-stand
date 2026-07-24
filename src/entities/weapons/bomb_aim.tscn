@@ -3,5 +3,4 @@
 [ext_resource type="Texture2D" uid="uid://dpyiwh7t4dhml" path="res://assets/bomb_reticle.png" id="1_psghh"]
 
 [node name="BombAim" type="Sprite2D" unique_id=1436436697]
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_psghh")

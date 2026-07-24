@@ -46,7 +46,7 @@ texture = ExtResource("4_eb65w")
 [node name="AimLine" parent="." unique_id=381144997 instance=ExtResource("1_vt6n5")]
 
 [node name="BombAim" parent="." unique_id=1436436697 instance=ExtResource("7_n7e5a")]
-visible = false
+position = Vector2(0, 46)
 script = ExtResource("8_kc3pt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=497497303]

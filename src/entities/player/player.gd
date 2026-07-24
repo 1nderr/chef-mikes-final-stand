@@ -11,8 +11,6 @@ extends Node2D
 @onready var bomb_aim: BombAim = $BombAim
 
 var _can_shoot = true
-var _has_bomb = true
-var _has_big_bomb = false
 
 
 func _ready() -> void:
@@ -25,19 +23,15 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if _has_bomb:
-		bomb_aim.visible = true
-		bomb_aim.scale = Vector2(1.25, 1.25)
-	else:
-		bomb_aim.visible = true
-		bomb_aim.scale = Vector2(0.5, 0.5)
 	if _can_shoot and Input.is_action_pressed("shoot"):
 		shoot()
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if (_has_bomb or _has_big_bomb) and event.is_action_pressed("bomb"):
+	if GameManager.bombs > 0 and event.is_action_pressed("bomb"):
 		throw_bomb()
+	elif GameManager.slows > 0 and event.is_action_pressed("slow"):
+		SignalBus.slow_applied.emit(0.5)
 
 
 func shoot() -> void:
@@ -53,14 +47,8 @@ func shoot() -> void:
 func throw_bomb() -> void:
 	var bomb = bomb_scene.instantiate() as Bomb
 	bomb.global_position = get_global_mouse_position()
-
-	if _has_big_bomb:
-		bomb.double()
-
 	get_tree().current_scene.add_child(bomb)
-
-	_has_bomb = false
-	_has_big_bomb = false
+	GameManager.bombs = max(GameManager.bombs - 1, 0)
 
 
 func _on_cooldown_timer_timeout() -> void:
@@ -91,25 +79,9 @@ func _spawn_heart() -> void:
 
 
 func _on_microwave_done(item: Microwave.Item) -> void:
-	_has_bomb = false
-	#_has_big_bomb = false
-
 	if item == Microwave.Item.BOMB:
-		_has_bomb = true
+		GameManager.bombs += 1
 	elif item == Microwave.Item.SLOW:
-		SignalBus.slow_applied.emit(0.5)
-
-	#if item == Microwave.Item.HEALTH and _is_double:
-	#	health_component.heal(2)
-	#	print(health_component.get_hp())
-	#elif item == Microwave.Item.HEALTH:
-	#	health_component.heal(1)
-	#	print(health_component.get_hp())
-	#elif item == Microwave.Item.BOMB and _is_double:
-	#	_has_big_bomb = true
-	#elif item == Microwave.Item.BOMB:
-	#	_has_bomb = true
-	#elif item == Microwave.Item.SLOW and _is_double:
-	#	SignalBus.slow_applied.emit(0)
-	#elif item == Microwave.Item.SLOW:
-	#	SignalBus.slow_applied.emit(0.5)
+		GameManager.slows += 1
+	elif item == Microwave.Item.DISC:
+		GameManager.discs += 1

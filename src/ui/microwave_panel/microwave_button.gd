@@ -1,7 +1,7 @@
 class_name MicrowaveButton
 extends TextureButton
 
-@export var item: Microwave.Item = Microwave.Item.HEALTH
+@export var item: Microwave.Item = Microwave.Item.DISC
 @export var wait_time: float = 10
 
 

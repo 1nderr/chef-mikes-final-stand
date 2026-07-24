@@ -6,9 +6,10 @@
 [ext_resource type="Script" uid="uid://dkc26sjji1l2d" path="res://src/effects/shaking_component.gd" id="2_2in8s"]
 [ext_resource type="PackedScene" uid="uid://bbjyd6vwadc07" path="res://src/entities/microwave/microwave.tscn" id="2_x62ka"]
 [ext_resource type="PackedScene" uid="uid://c3ch05u31hjfb" path="res://src/ui/microwave_panel/microwave_panel.tscn" id="3_ivtyw"]
-[ext_resource type="PackedScene" uid="uid://ds3y5ko3wo4tb" path="res://src/ui/microwave_timer/microwave_timer.tscn" id="4_w61mg"]
+[ext_resource type="PackedScene" uid="uid://ds3y5ko3wo4tb" path="res://src/ui/hud/microwave_timer.tscn" id="4_w61mg"]
 [ext_resource type="PackedScene" uid="uid://0oelfyu0fald" path="res://src/entities/enemy/enemy_spawner.tscn" id="4_x62ka"]
-[ext_resource type="PackedScene" uid="uid://jwo11u6loqsk" path="res://src/ui/health_bar/health_bar.tscn" id="5_nxx65"]
+[ext_resource type="PackedScene" uid="uid://jwo11u6loqsk" path="res://src/ui/hud/health_bar.tscn" id="7_2in8s"]
+[ext_resource type="PackedScene" uid="uid://yar6d7ip6te" path="res://src/ui/hud/item_display.tscn" id="9_2in8s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nxx65"]
 texture = ExtResource("1_q2b63")
@@ -70,11 +71,17 @@ position = Vector2(-119, 130)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=28753639]
 process_mode = 1
 
-[node name="HealthBar" parent="HUD" unique_id=926149703 instance=ExtResource("5_nxx65")]
+[node name="HealthBar" parent="HUD" unique_id=926149703 instance=ExtResource("7_2in8s")]
 offset_left = 2.0
-offset_top = 2.0
+offset_top = 1.0
 offset_right = -198.0
-offset_bottom = -206.0
+offset_bottom = -207.0
+
+[node name="Item Display" parent="HUD" unique_id=872636647 instance=ExtResource("9_2in8s")]
+offset_left = 2.0
+offset_top = 22.0
+offset_right = 42.0
+offset_bottom = 75.0
 
 [node name="MicrowaveTimer" parent="HUD" unique_id=166162071 instance=ExtResource("4_w61mg")]
 offset_left = 190.0

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ds3y5ko3wo4tb"]
 
-[ext_resource type="Script" uid="uid://bhyy3p8ni4ghx" path="res://src/ui/microwave_timer/microwave_timer.gd" id="1_c1ttq"]
+[ext_resource type="Script" uid="uid://bhyy3p8ni4ghx" path="res://src/ui/hud/microwave_timer.gd" id="1_c1ttq"]
 [ext_resource type="LabelSettings" uid="uid://i1d6jk1ru27p" path="res://resources/label_settings/microwave_timer_green.tres" id="1_spjg4"]
 [ext_resource type="LabelSettings" uid="uid://bmiywdyhgpux5" path="res://resources/label_settings/microwave_timer_white.tres" id="3_vcssv"]
 [ext_resource type="Texture2D" uid="uid://drowrisbja2qe" path="res://assets/time_frame.png" id="4_ohfuc"]

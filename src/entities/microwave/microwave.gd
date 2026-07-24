@@ -1,7 +1,7 @@
 class_name Microwave
 extends Area2D
 
-enum Item { HEALTH, BOMB, SLOW }
+enum Item { DISC, BOMB, SLOW }
 
 @export var double_time: float = 1
 
