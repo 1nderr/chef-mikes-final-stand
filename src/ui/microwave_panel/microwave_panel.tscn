@@ -43,4 +43,4 @@ layout_mode = 2
 text = "Slow"
 script = ExtResource("2_qmtpd")
 item = 2
-wait_time = 1.0
+wait_time = 20.0

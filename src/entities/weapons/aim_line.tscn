@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwwfm4t5qrv4v"]
 
-[ext_resource type="Script" uid="uid://des8vm88csqgp" path="res://src/entities/gun/aim_line.gd" id="1_j2ul4"]
+[ext_resource type="Script" uid="uid://des8vm88csqgp" path="res://src/entities/weapons/aim_line.gd" id="1_j2ul4"]
 
 [node name="AimLine" type="Line2D" unique_id=381144997]
 z_index = -1

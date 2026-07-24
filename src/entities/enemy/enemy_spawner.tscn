@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://0oelfyu0fald"]
+
+[ext_resource type="Script" uid="uid://p8x6k58qbhwb" path="res://src/entities/enemy/enemy_spawner.gd" id="1_s2ha0"]
+[ext_resource type="PackedScene" uid="uid://c3aqbvkprra7g" path="res://src/entities/enemy/enemy.tscn" id="2_2bq0t"]
+
+[node name="EnemySpawner" type="Marker2D" unique_id=737043293]
+script = ExtResource("1_s2ha0")
+enemy_scene = ExtResource("2_2bq0t")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=993067002]
+one_shot = true

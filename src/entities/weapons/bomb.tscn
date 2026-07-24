@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d2dl27hml1ywm"]
+
+[ext_resource type="Script" uid="uid://cpcfjc7p1nry1" path="res://src/components/hitbox_component.gd" id="1_4tjk5"]
+[ext_resource type="Script" uid="uid://bwg21w3fla3e4" path="res://src/entities/weapons/bomb.gd" id="1_v3fdt"]
+[ext_resource type="Shape2D" uid="uid://0bbaeadbiefs" path="res://resources/collision_shapes/bomb.tres" id="3_2ys6l"]
+
+[node name="Bomb" type="Node2D" unique_id=2081643945]
+script = ExtResource("1_v3fdt")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=346317050]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_4tjk5")
+metadata/_custom_type_script = "uid://cpcfjc7p1nry1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1233137163]
+shape = ExtResource("3_2ys6l")
+debug_color = Color(0.99999994, 0.0065831314, 0.07816311, 0.41960785)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dxj77fhnyeg1t"]
 
-[ext_resource type="Script" uid="uid://d6wp6okwnrd8" path="res://src/entities/gun/bullet.gd" id="1_y0kvl"]
+[ext_resource type="Script" uid="uid://d6wp6okwnrd8" path="res://src/entities/weapons/bullet.gd" id="1_y0kvl"]
 [ext_resource type="Texture2D" uid="uid://doylh1ggiaxri" path="res://icon.svg" id="2_ylysl"]
 [ext_resource type="Script" uid="uid://cpcfjc7p1nry1" path="res://src/components/hitbox_component.gd" id="3_ylysl"]
 
