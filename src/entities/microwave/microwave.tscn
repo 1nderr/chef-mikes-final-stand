@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bbjyd6vwadc07"]
+
+[ext_resource type="Script" uid="uid://gq5mvkfr8dag" path="res://src/entities/microwave/microwave.gd" id="1_26k0w"]
+[ext_resource type="Texture2D" uid="uid://doylh1ggiaxri" path="res://icon.svg" id="1_qm4rb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sn2t0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qm4rb")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Microwave" type="Node2D" unique_id=679489552]
+script = ExtResource("1_26k0w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2095432198]
+modulate = Color(0.7529412, 0.7372549, 0, 1)
+scale = Vector2(1, 0.5)
+sprite_frames = SubResource("SpriteFrames_sn2t0")
+autoplay = "default"
+
+[node name="Timer" type="Timer" parent="." unique_id=1098042126]
+one_shot = true

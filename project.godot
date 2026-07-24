@@ -17,6 +17,11 @@ boot_splash/show_image=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*uid://cdk7m701ax325"
+SignalBus="*uid://nnq3e388gxoy"
+
 [display]
 
 window/size/viewport_width=640
@@ -37,6 +42,7 @@ shoot={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemies"
+2d_physics/layer_4="bullets"
 
 [physics]
 

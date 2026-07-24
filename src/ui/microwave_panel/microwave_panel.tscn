@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c3ch05u31hjfb"]
+
+[ext_resource type="Script" uid="uid://crr8ck52tuty" path="res://src/ui/microwave_panel/microwave_panel.gd" id="1_sy6bd"]
+[ext_resource type="Script" uid="uid://boq33ps846xgq" path="res://src/ui/microwave_panel/microwave_button.gd" id="2_qmtpd"]
+
+[node name="MicrowavePanel" type="Control" unique_id=1287453966]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sy6bd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1307420236]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -20.0
+offset_right = 125.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=1123086259]
+layout_mode = 2
+text = "Health"
+script = ExtResource("2_qmtpd")
+
+[node name="Button2" type="Button" parent="HBoxContainer" unique_id=346022221]
+layout_mode = 2
+text = "Bomb"
+script = ExtResource("2_qmtpd")
+item = 1
+wait_time = 15.0
+
+[node name="Button3" type="Button" parent="HBoxContainer" unique_id=1313012920]
+layout_mode = 2
+text = "Slow"
+script = ExtResource("2_qmtpd")
+item = 2
+wait_time = 1.0

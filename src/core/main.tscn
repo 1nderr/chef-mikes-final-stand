@@ -1,10 +1,51 @@
 [gd_scene format=3 uid="uid://2u11t68hh0cp"]
 
 [ext_resource type="PackedScene" uid="uid://dhlh0fe0111xw" path="res://src/entities/player/player.tscn" id="1_avv2o"]
+[ext_resource type="PackedScene" uid="uid://c3aqbvkprra7g" path="res://src/entities/enemy/enemy.tscn" id="2_ukt3u"]
+[ext_resource type="PackedScene" uid="uid://bbjyd6vwadc07" path="res://src/entities/microwave/microwave.tscn" id="2_x62ka"]
+[ext_resource type="PackedScene" uid="uid://c3ch05u31hjfb" path="res://src/ui/microwave_panel/microwave_panel.tscn" id="3_ivtyw"]
 
 [node name="Main" type="Node2D" unique_id=502304520]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=232557492]
 
-[node name="Player" parent="." unique_id=1572185499 instance=ExtResource("1_avv2o")]
+[node name="EntitiesRoot" type="Node2D" parent="." unique_id=1366095616]
+process_mode = 1
+
+[node name="Player" parent="EntitiesRoot" unique_id=1572185499 instance=ExtResource("1_avv2o")]
 position = Vector2(0, -97)
+
+[node name="Microwave" parent="EntitiesRoot" unique_id=679489552 instance=ExtResource("2_x62ka")]
+position = Vector2(0, -146)
+
+[node name="Enemy" parent="EntitiesRoot" unique_id=727386105 instance=ExtResource("2_ukt3u")]
+position = Vector2(-2, 155)
+
+[node name="Enemy2" parent="EntitiesRoot" unique_id=379080986 instance=ExtResource("2_ukt3u")]
+position = Vector2(-267, 148)
+
+[node name="Enemy3" parent="EntitiesRoot" unique_id=1330942969 instance=ExtResource("2_ukt3u")]
+position = Vector2(-275, -106)
+
+[node name="Enemy4" parent="EntitiesRoot" unique_id=187315363 instance=ExtResource("2_ukt3u")]
+position = Vector2(-270, 16)
+
+[node name="Enemy5" parent="EntitiesRoot" unique_id=35581552 instance=ExtResource("2_ukt3u")]
+position = Vector2(268, -96)
+
+[node name="Enemy6" parent="EntitiesRoot" unique_id=156043387 instance=ExtResource("2_ukt3u")]
+position = Vector2(268, 3)
+
+[node name="Enemy7" parent="EntitiesRoot" unique_id=1276304970 instance=ExtResource("2_ukt3u")]
+position = Vector2(266, 143)
+
+[node name="Enemy8" parent="EntitiesRoot" unique_id=1277844507 instance=ExtResource("2_ukt3u")]
+position = Vector2(-152, 153)
+
+[node name="Enemy9" parent="EntitiesRoot" unique_id=1083858744 instance=ExtResource("2_ukt3u")]
+position = Vector2(147, 150)
+
+[node name="MicrowaveScreen" type="CanvasLayer" parent="." unique_id=475046930]
+process_mode = 2
+
+[node name="MicrowavePanel" parent="MicrowaveScreen" unique_id=1287453966 instance=ExtResource("3_ivtyw")]

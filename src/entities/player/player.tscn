@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://cluuulpuqt5ht" path="res://src/entities/player/player.gd" id="1_muk8e"]
 [ext_resource type="PackedScene" uid="uid://cwwfm4t5qrv4v" path="res://src/entities/gun/aim_line.tscn" id="1_vt6n5"]
 [ext_resource type="PackedScene" uid="uid://dxj77fhnyeg1t" path="res://src/entities/gun/bullet.tscn" id="2_wrxq6"]
+[ext_resource type="Script" uid="uid://k8yocm51qn8r" path="res://src/components/hurtbox_component.gd" id="5_0mfjg"]
+[ext_resource type="Script" uid="uid://cdml4ejpp07ir" path="res://src/components/health_component.gd" id="6_oih67"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sn2t0"]
 animations = [{
@@ -16,7 +18,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D" unique_id=1572185499]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn2t0"]
+size = Vector2(28, 28)
+
+[node name="Player" type="Node2D" unique_id=1572185499 groups=["player"]]
+z_index = 2
 script = ExtResource("1_muk8e")
 bullet_scene = ExtResource("2_wrxq6")
 
@@ -27,6 +33,19 @@ autoplay = "default"
 
 [node name="AimLine" parent="." unique_id=381144997 instance=ExtResource("1_vt6n5")]
 
+[node name="Hurtbox" type="Area2D" parent="." unique_id=966539396]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("5_0mfjg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2084262555]
+shape = SubResource("RectangleShape2D_sn2t0")
+debug_color = Color(0.114793606, 0.6490636, 0, 0.41960785)
+
 [node name="CooldownTimer" type="Timer" parent="." unique_id=443058346]
 wait_time = 0.1
 one_shot = true
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1277235068]
+script = ExtResource("6_oih67")
+max_hp = 3

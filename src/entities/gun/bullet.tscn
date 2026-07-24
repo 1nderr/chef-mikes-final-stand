@@ -2,11 +2,17 @@
 
 [ext_resource type="Script" uid="uid://d6wp6okwnrd8" path="res://src/entities/gun/bullet.gd" id="1_y0kvl"]
 [ext_resource type="Texture2D" uid="uid://doylh1ggiaxri" path="res://icon.svg" id="2_ylysl"]
+[ext_resource type="Script" uid="uid://cpcfjc7p1nry1" path="res://src/components/hitbox_component.gd" id="3_ylysl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn2t0"]
 size = Vector2(12, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_215gw"]
+size = Vector2(12, 12)
+
 [node name="Bullet" type="AnimatableBody2D" unique_id=1575048941]
+modulate = Color(0.39232534, 0.39232537, 0.39232534, 1)
+z_index = 1
 script = ExtResource("1_y0kvl")
 speed = 500.0
 
@@ -32,3 +38,13 @@ rect = Rect2(-2, 8, 1, 1)
 [node name="VisibleOnScreenNotifier2D3" type="VisibleOnScreenNotifier2D" parent="VisibleNotifiers" unique_id=261537647]
 position = Vector2(2, -8)
 rect = Rect2(8, 6, 1, 1)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=619647344]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_ylysl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=83985470]
+shape = SubResource("RectangleShape2D_215gw")
+one_way_collision = true
+debug_color = Color(0.99552256, 0, 0.21176422, 0.41960785)
