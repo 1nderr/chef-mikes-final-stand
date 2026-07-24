@@ -43,8 +43,17 @@ func _on_hit(_hurtbox: Hurtbox) -> void:
 
 func _on_slow_timer_timeout() -> void:
 	_time_scale = 1.0
+	slow_timer.wait_time = 5
 
 
 func _on_slow_applied(time_scale: float) -> void:
 	_time_scale = time_scale
+	slow_timer.start()
+
+
+func apply_slow(time_scale: float, wait_time: float) -> void:
+	if time_scale == 1:
+		return
+	_time_scale = time_scale
+	slow_timer.wait_time = wait_time
 	slow_timer.start()

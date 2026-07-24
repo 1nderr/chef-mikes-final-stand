@@ -2,6 +2,16 @@
 
 [ext_resource type="Script" uid="uid://crr8ck52tuty" path="res://src/ui/microwave_panel/microwave_panel.gd" id="1_sy6bd"]
 [ext_resource type="Script" uid="uid://boq33ps846xgq" path="res://src/ui/microwave_panel/microwave_button.gd" id="2_qmtpd"]
+[ext_resource type="Texture2D" uid="uid://cltl47kig7dct" path="res://assets/select_menu.png" id="2_sy6bd"]
+[ext_resource type="Texture2D" uid="uid://d3c1qfmwyriga" path="res://assets/pizza.png" id="3_q23e7"]
+[ext_resource type="Texture2D" uid="uid://cift7ec0kr5kv" path="res://assets/popcorn.png" id="3_qmtpd"]
+[ext_resource type="Texture2D" uid="uid://dmfi7cypjrfi2" path="res://assets/icecream.png" id="6_m70bb"]
+[ext_resource type="FontFile" uid="uid://dpebm1j1mxeda" path="res://assets/Kenney Future Narrow.ttf" id="7_m70bb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sn2t0"]
+font = ExtResource("7_m70bb")
+font_size = 8
+font_color = Color(0.29411766, 0.69411767, 0.18431373, 1)
 
 [node name="MicrowavePanel" type="Control" unique_id=1287453966]
 layout_mode = 3
@@ -12,35 +22,59 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sy6bd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1307420236]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=205558846]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -20.0
-offset_right = 125.0
-offset_bottom = 20.0
-grow_horizontal = 2
+offset_left = 129.0
+offset_top = -112.0
+offset_right = 258.0
+offset_bottom = 112.0
 grow_vertical = 2
+texture = ExtResource("2_sy6bd")
 
-[node name="Button" type="Button" parent="HBoxContainer" unique_id=1123086259]
-layout_mode = 2
-text = "Health"
-script = ExtResource("2_qmtpd")
+[node name="PizzaButton" type="TextureButton" parent="." unique_id=1043221952]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 120.0
+offset_right = 177.0
+offset_bottom = 152.0
+scale = Vector2(0.9, 0.9)
+texture_normal = ExtResource("3_q23e7")
 
-[node name="Button2" type="Button" parent="HBoxContainer" unique_id=346022221]
-layout_mode = 2
-text = "Bomb"
+[node name="PopcornButton" type="TextureButton" parent="." unique_id=2060831370]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 118.0
+offset_right = 210.0
+offset_bottom = 150.0
+texture_normal = ExtResource("3_qmtpd")
 script = ExtResource("2_qmtpd")
 item = 1
-wait_time = 15.0
 
-[node name="Button3" type="Button" parent="HBoxContainer" unique_id=1313012920]
-layout_mode = 2
-text = "Slow"
+[node name="IcecreamButton" type="TextureButton" parent="." unique_id=553621291]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 118.0
+offset_right = 242.0
+offset_bottom = 150.0
+texture_normal = ExtResource("6_m70bb")
 script = ExtResource("2_qmtpd")
 item = 2
 wait_time = 20.0
+
+[node name="Label" type="Label" parent="." unique_id=14374778]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 68.0
+offset_right = 235.0
+offset_bottom = 104.0
+text = "Select Food"
+label_settings = SubResource("LabelSettings_sn2t0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=129398989]
+layout_mode = 0
+offset_right = 131.0
+offset_bottom = 224.0
+color = Color(0, 0, 0, 0.46666667)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3aqbvkprra7g"]
 
 [ext_resource type="Script" uid="uid://bqic8sqg4gmla" path="res://src/entities/enemy/enemy.gd" id="1_vg1v2"]
+[ext_resource type="Texture2D" uid="uid://m1s67wr0a15k" path="res://assets/shadow.png" id="2_y6j3k"]
 [ext_resource type="Texture2D" uid="uid://tvswelausylq" path="res://assets/chef.png" id="2_yu70o"]
 [ext_resource type="Script" uid="uid://k8yocm51qn8r" path="res://src/components/hurtbox_component.gd" id="3_w1tau"]
 [ext_resource type="Script" uid="uid://cpcfjc7p1nry1" path="res://src/components/hitbox_component.gd" id="3_yu70o"]
@@ -29,12 +30,80 @@ size = Vector2(13, 17)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_215gw"]
 size = Vector2(13, 24)
 
+[sub_resource type="Animation" id="Animation_gdlib"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y6j3k"]
+resource_name = "run"
+length = 0.39999999999999997
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3.615), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gdlib"]
+_data = {
+&"RESET": SubResource("Animation_gdlib"),
+&"run": SubResource("Animation_y6j3k")
+}
+
 [node name="Enemy" type="CharacterBody2D" unique_id=727386105]
 script = ExtResource("1_vg1v2")
+speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1274518723]
 shape = SubResource("RectangleShape2D_sn2t0")
 disabled = true
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=488256220]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 7)
+texture = ExtResource("2_y6j3k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=263323871]
 sprite_frames = SubResource("SpriteFrames_sn2t0")
@@ -66,3 +135,7 @@ script = ExtResource("4_yu70o")
 [node name="SlowTimer" type="Timer" parent="." unique_id=1793350190]
 wait_time = 5.0
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=320610972]
+libraries/ = SubResource("AnimationLibrary_gdlib")
+autoplay = &"run"

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://jwo11u6loqsk"]
+
+[ext_resource type="Texture2D" uid="uid://dcywi30ih8ad0" path="res://assets/heart.png" id="1_sgdx7"]
+[ext_resource type="Script" uid="uid://c6kls4o2t14eh" path="res://src/ui/health_bar/health_bar.gd" id="2_2shlj"]
+
+[node name="HealthBar" type="HBoxContainer" unique_id=926149703]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -200.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+script = ExtResource("2_2shlj")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=663848755]
+layout_mode = 2
+texture = ExtResource("1_sgdx7")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1997715424]
+layout_mode = 2
+texture = ExtResource("1_sgdx7")
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=2036571107]
+layout_mode = 2
+texture = ExtResource("1_sgdx7")

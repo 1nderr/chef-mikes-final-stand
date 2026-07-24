@@ -4,9 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://cwwfm4t5qrv4v" path="res://src/entities/weapons/aim_line.tscn" id="1_vt6n5"]
 [ext_resource type="PackedScene" uid="uid://dxj77fhnyeg1t" path="res://src/entities/weapons/bullet.tscn" id="2_wrxq6"]
 [ext_resource type="PackedScene" uid="uid://d2dl27hml1ywm" path="res://src/entities/weapons/bomb.tscn" id="3_oih67"]
+[ext_resource type="PackedScene" uid="uid://twbhf8x0f3g8" path="res://src/effects/heart_particle.tscn" id="4_4f0qm"]
+[ext_resource type="Texture2D" uid="uid://m1s67wr0a15k" path="res://assets/shadow.png" id="4_eb65w"]
 [ext_resource type="Texture2D" uid="uid://tvswelausylq" path="res://assets/chef.png" id="4_oih67"]
 [ext_resource type="Script" uid="uid://k8yocm51qn8r" path="res://src/components/hurtbox_component.gd" id="5_0mfjg"]
 [ext_resource type="Script" uid="uid://cdml4ejpp07ir" path="res://src/components/health_component.gd" id="6_oih67"]
+[ext_resource type="PackedScene" uid="uid://40rnevpko15f" path="res://src/entities/weapons/bomb_aim.tscn" id="7_n7e5a"]
+[ext_resource type="Script" uid="uid://ci0ye7vciwb0m" path="res://src/entities/weapons/bomb_aim.gd" id="8_kc3pt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eb65w"]
 atlas = ExtResource("4_oih67")
@@ -31,12 +35,23 @@ z_index = 2
 script = ExtResource("1_muk8e")
 bullet_scene = ExtResource("2_wrxq6")
 bomb_scene = ExtResource("3_oih67")
+heart_scene = ExtResource("4_4f0qm")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1810420793]
+modulate = Color(0, 0, 0, 1)
+z_as_relative = false
+position = Vector2(0, 7)
+texture = ExtResource("4_eb65w")
+
+[node name="AimLine" parent="." unique_id=381144997 instance=ExtResource("1_vt6n5")]
+
+[node name="BombAim" parent="." unique_id=1436436697 instance=ExtResource("7_n7e5a")]
+visible = false
+script = ExtResource("8_kc3pt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=497497303]
 sprite_frames = SubResource("SpriteFrames_sn2t0")
 autoplay = "default"
-
-[node name="AimLine" parent="." unique_id=381144997 instance=ExtResource("1_vt6n5")]
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=966539396]
 collision_layer = 2

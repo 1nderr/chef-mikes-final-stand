@@ -5,14 +5,16 @@ extends Node2D
 
 @onready var hitbox: Hitbox = $Hitbox
 @onready var collision: CollisionShape2D = $Hitbox/CollisionShape2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
-	hitbox.hit.connect(_on_hit)
+	GameManager.camera.screen_shake(3, 0.75)
 
 
-func _on_hit(_hurtbox: Hurtbox) -> void:
-	queue_free()
+func _process(delta: float) -> void:
+	if not sprite.is_playing():
+		queue_free()
 
 
 func double() -> void:

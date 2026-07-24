@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ds3y5ko3wo4tb"]
+
+[ext_resource type="Script" uid="uid://bhyy3p8ni4ghx" path="res://src/ui/microwave_timer/microwave_timer.gd" id="1_c1ttq"]
+[ext_resource type="LabelSettings" uid="uid://i1d6jk1ru27p" path="res://resources/label_settings/microwave_timer_green.tres" id="1_spjg4"]
+[ext_resource type="LabelSettings" uid="uid://bmiywdyhgpux5" path="res://resources/label_settings/microwave_timer_white.tres" id="3_vcssv"]
+[ext_resource type="Texture2D" uid="uid://drowrisbja2qe" path="res://assets/time_frame.png" id="4_ohfuc"]
+
+[node name="MicrowaveTimer" type="Control" unique_id=166162071]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c1ttq")
+green_label_settings = ExtResource("1_spjg4")
+white_label_settings = ExtResource("3_vcssv")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2071445703]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 64.0
+offset_bottom = 42.0
+scale = Vector2(1, 0.5)
+texture = ExtResource("4_ohfuc")
+
+[node name="Label" type="Label" parent="." unique_id=804164110]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 59.0
+offset_bottom = 27.0
+text = "00:45"
+label_settings = ExtResource("1_spjg4")
+
+[node name="Timer" type="Timer" parent="." unique_id=1475124307]
+one_shot = true
