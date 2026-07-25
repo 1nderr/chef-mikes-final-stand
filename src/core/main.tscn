@@ -119,6 +119,7 @@ offset_right = -24.0
 offset_bottom = -200.0
 
 [node name="Label" type="Label" parent="HUD" unique_id=2122842145]
+process_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

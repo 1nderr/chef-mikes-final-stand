@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var speed = 50.0
 @export var smoke_scene: PackedScene
+@export var slow_color: Color = Color(0.35686275, 0.43137255, 0.88235295, 1)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Hitbox = $Hitbox
@@ -62,19 +63,19 @@ func _on_hit(_hurtbox: Hurtbox) -> void:
 func _on_slow_timer_timeout() -> void:
 	_time_scale = 1.0
 	slow_timer.wait_time = 5
-	sprite.play(color)
+	sprite.self_modulate = Color.WHITE
 
 
 func _on_slow_applied(time_scale: float) -> void:
 	_time_scale = time_scale
-	sprite.play("slow")
+	sprite.self_modulate = slow_color
 	slow_timer.start()
 
 
 func apply_slow(time_scale: float, wait_time: float) -> void:
 	if time_scale == 1:
 		return
-	sprite.play("slow")
+	sprite.self_modulate = slow_color
 	_time_scale = time_scale
 	slow_timer.wait_time = wait_time
 	slow_timer.start()

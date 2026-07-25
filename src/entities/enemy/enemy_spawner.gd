@@ -6,9 +6,11 @@ extends Marker2D
 @export var enemy_scene: PackedScene
 
 # Difficulty ramp: interval shrinks and tough enemies grow as the order is filled.
+# Reds are kept rare here on purpose — they're the telegraphed TANK-wave threat
+# (where a disc can line them up); the ramp carries fair white/purple pressure.
 @export var late_interval_mult: float = 0.4
-@export var red_chance_early: float = 0.03
-@export var red_chance_late: float = 0.22
+@export var red_chance_early: float = 0.0
+@export var red_chance_late: float = 0.08
 @export var purple_chance_early: float = 0.12
 @export var purple_chance_late: float = 0.33
 

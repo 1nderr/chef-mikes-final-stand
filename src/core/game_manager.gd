@@ -6,7 +6,7 @@ var player: Player
 var camera: ShakingCamera
 var discs: int = 1
 var bombs: int = 1
-var slows: int = 1
+var slows: int = 0
 var enemies_remaining: int = ENEMIES_TOTAL
 var enemies_spawned: int = 0
 
