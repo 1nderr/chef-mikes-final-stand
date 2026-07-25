@@ -2,6 +2,6 @@ extends Node
 
 var player: Player
 var camera: ShakingCamera
-var discs: int = 3
-var bombs: int = 3
-var slows: int = 3
+var discs: int = 1
+var bombs: int = 1
+var slows: int = 1

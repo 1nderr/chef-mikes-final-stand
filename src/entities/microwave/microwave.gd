@@ -29,6 +29,9 @@ func _process(_delta: float) -> void:
 		sprite.play("flash")
 	if sprite.animation == "flash" and timer.time_left <= double_time and Input.is_action_just_pressed("open"):
 		SignalBus.healed.emit()
+		timer.stop()
+		sprite.play("off")
+		SignalBus.microwave_done.emit(_item)
 
 
 func _on_microwave_start(item: Item, wait_time: float) -> void:
