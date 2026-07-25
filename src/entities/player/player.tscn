@@ -164,7 +164,7 @@ shape = SubResource("RectangleShape2D_sn2t0")
 debug_color = Color(0.114793606, 0.6490636, 0, 0.41960785)
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=443058346]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1277235068]
