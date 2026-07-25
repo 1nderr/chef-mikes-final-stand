@@ -44,6 +44,10 @@ func _on_hurt(_hitbox: Hitbox) -> void:
 
 
 func _on_died() -> void:
+	GameManager.enemies_remaining = max(0, GameManager.enemies_remaining - 1)
+	GameManager.enemies_spawned = max(0, GameManager.enemies_spawned - 1)
+	if GameManager.enemies_remaining == 0:
+		SignalBus.gameover.emit()
 	var smoke = smoke_scene.instantiate() as Node2D
 	smoke.global_position = global_position
 	get_tree().current_scene.add_child(smoke)
@@ -51,6 +55,7 @@ func _on_died() -> void:
 
 
 func _on_hit(_hurtbox: Hurtbox) -> void:
+	GameManager.enemies_spawned = max(0, GameManager.enemies_spawned - 1)
 	queue_free()
 
 

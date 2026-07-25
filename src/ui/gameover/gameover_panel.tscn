@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cqldi50dng53d"]
+
+[ext_resource type="Script" uid="uid://ccuug1a6ioov0" path="res://src/ui/gameover/gameover_panel.gd" id="1_ia40y"]
+[ext_resource type="FontFile" uid="uid://dpebm1j1mxeda" path="res://assets/Kenney Future Narrow.ttf" id="2_isbp7"]
+[ext_resource type="Texture2D" uid="uid://8nxhlbqwt3ef" path="res://assets/restart_icon.png" id="2_rkv1k"]
+[ext_resource type="Script" uid="uid://b3gw0dnutb2np" path="res://src/ui/gameover/retry_button.gd" id="3_isbp7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bvxdu"]
+font = ExtResource("2_isbp7")
+font_size = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn2t0"]
+atlas = ExtResource("2_rkv1k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n0i7"]
+atlas = ExtResource("2_rkv1k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_215gw"]
+atlas = ExtResource("2_rkv1k")
+region = Rect2(16, 0, 16, 16)
+
+[node name="GameoverPanel" type="Control" unique_id=1183709522]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ia40y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=61166348]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 224.0
+color = Color(0, 0, 0, 0.46666667)
+
+[node name="Label" type="Label" parent="." unique_id=71944499]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -73.0
+offset_right = 74.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Winner"
+label_settings = SubResource("LabelSettings_bvxdu")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1639163553]
+modulate = Color(0.5684514, 0.7940943, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -8.0
+offset_right = 3.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_sn2t0")
+texture_pressed = SubResource("AtlasTexture_8n0i7")
+texture_hover = SubResource("AtlasTexture_215gw")
+script = ExtResource("3_isbp7")

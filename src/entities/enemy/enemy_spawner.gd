@@ -26,6 +26,11 @@ func _on_spawn_timer_timeout() -> void:
 	spawn_timer.wait_time = randf_range(min_spawn_time, max_spawn_time)
 	spawn_timer.start()
 
+	if GameManager.enemies_remaining - GameManager.enemies_spawned <= 0:
+		return
+
+	GameManager.enemies_spawned += 1
+
 	var enemy = enemy_scene.instantiate() as Enemy
 
 	enemy.global_position = global_position
