@@ -5,6 +5,7 @@ extends Node2D
 @export var bomb_scene: PackedScene
 @export var disc_scene: PackedScene
 @export var heart_scene: PackedScene
+@export var smoke_scene: PackedScene
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldown_timer: Timer = $CooldownTimer
@@ -13,6 +14,9 @@ extends Node2D
 @onready var bomb_aim: BombAim = $BombAim
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_flash: SpriteFlash = $SpriteFlash
+@onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
+@onready var ice_sound: AudioStreamPlayer2D = $IceSound
+@onready var skill_sound: AudioStreamPlayer2D = $SkillSound
 
 var _can_shoot = true
 var _can_slow = true
@@ -41,6 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		throw_disc()
 	elif GameManager.slows > 0 and _can_slow and event.is_action_pressed("slow"):
 		SignalBus.slow_applied.emit(0.5)
+		ice_sound.play()
 		GameManager.slows = max(GameManager.slows - 1, 0)
 		_can_slow = false
 
@@ -82,10 +87,12 @@ func _on_hurt(hitbox: Hitbox) -> void:
 	GameManager.camera.screen_shake(1, 0.5)
 	health_component.take_damage(hitbox.damage)
 	SignalBus.health_updated.emit(health_component.get_hp())
+	hurt_sound.play()
 	sprite_flash.flash()
 
 
 func _on_healed() -> void:
+	skill_sound.play()
 	_spawn_heart()
 	animation_player.play("flash")
 	health_component.heal(1)
@@ -97,6 +104,9 @@ func _on_microwave_start(_item: Microwave.Item, _wait_time: float) -> void:
 
 
 func _on_died() -> void:
+	var smoke = smoke_scene.instantiate() as Node2D
+	smoke.global_position = global_position
+	get_tree().current_scene.add_child(smoke)
 	SignalBus.player_died.emit()
 	queue_free()
 

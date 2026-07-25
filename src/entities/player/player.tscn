@@ -10,10 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://tvswelausylq" path="res://assets/chef.png" id="4_oih67"]
 [ext_resource type="Script" uid="uid://k8yocm51qn8r" path="res://src/components/hurtbox_component.gd" id="5_0mfjg"]
 [ext_resource type="Texture2D" uid="uid://cisdqq0hous3m" path="res://assets/flash.png" id="6_3c4mh"]
+[ext_resource type="PackedScene" uid="uid://cacdkki3e48xr" path="res://src/effects/smoke_effect.tscn" id="6_lqdhu"]
 [ext_resource type="Script" uid="uid://cdml4ejpp07ir" path="res://src/components/health_component.gd" id="6_oih67"]
 [ext_resource type="PackedScene" uid="uid://40rnevpko15f" path="res://src/entities/weapons/bomb_aim.tscn" id="7_n7e5a"]
 [ext_resource type="Script" uid="uid://ci0ye7vciwb0m" path="res://src/entities/weapons/bomb_aim.gd" id="8_kc3pt"]
 [ext_resource type="Script" uid="uid://br7uekojv6dx5" path="res://src/effects/sprite_flash.gd" id="14_p2qdy"]
+[ext_resource type="AudioStream" uid="uid://ba27r07pdc6ta" path="res://assets/sounds/hurt.wav" id="16_0tyfe"]
+[ext_resource type="AudioStream" uid="uid://dr4ctfw8xakgp" path="res://assets/sounds/ice.wav" id="16_t8d2k"]
+[ext_resource type="AudioStream" uid="uid://dc45846r2apy7" path="res://assets/sounds/skill.wav" id="16_yi0df"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eb65w"]
 atlas = ExtResource("4_oih67")
@@ -125,6 +129,7 @@ bullet_scene = ExtResource("2_wrxq6")
 bomb_scene = ExtResource("3_oih67")
 disc_scene = ExtResource("4_kc3pt")
 heart_scene = ExtResource("4_4f0qm")
+smoke_scene = ExtResource("6_lqdhu")
 
 [node name="Flash" type="Sprite2D" parent="." unique_id=456677604]
 visible = false
@@ -166,9 +171,21 @@ one_shot = true
 script = ExtResource("6_oih67")
 max_hp = 3
 
-[node name="SpriteFlash" type="Node" parent="." unique_id=369708083 node_paths=PackedStringArray("sprite")]
+[node name="SpriteFlash" type="Node" parent="." unique_id=369708083 node_paths=PackedStringArray("target")]
 script = ExtResource("14_p2qdy")
-sprite = NodePath("../AnimatedSprite2D")
+target = NodePath("../AnimatedSprite2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1732927990]
 libraries/ = SubResource("AnimationLibrary_t8d2k")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1570340873]
+process_mode = 3
+stream = ExtResource("16_0tyfe")
+
+[node name="SkillSound" type="AudioStreamPlayer2D" parent="." unique_id=1404570340]
+process_mode = 3
+stream = ExtResource("16_yi0df")
+
+[node name="IceSound" type="AudioStreamPlayer2D" parent="." unique_id=1832829547]
+process_mode = 3
+stream = ExtResource("16_t8d2k")

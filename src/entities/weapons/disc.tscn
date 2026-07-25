@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bchsnmb7oyn7g" path="res://src/entities/weapons/disc.gd" id="1_dj7jj"]
 [ext_resource type="Script" uid="uid://cpcfjc7p1nry1" path="res://src/components/hitbox_component.gd" id="1_slwqu"]
 [ext_resource type="Texture2D" uid="uid://d3c1qfmwyriga" path="res://assets/pizza.png" id="2_dj7jj"]
+[ext_resource type="AudioStream" uid="uid://3iko1kgsj703" path="res://assets/sounds/disc.wav" id="4_mxvwu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sn2t0"]
 radius = 16.03122
@@ -89,3 +90,7 @@ rect = Rect2(8, 6, 1, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=426435456]
 shape = SubResource("CircleShape2D_215gw")
 disabled = true
+
+[node name="DiscSound" type="AudioStreamPlayer2D" parent="." unique_id=76923887]
+stream = ExtResource("4_mxvwu")
+autoplay = true

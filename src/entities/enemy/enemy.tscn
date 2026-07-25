@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3aqbvkprra7g"]
 
 [ext_resource type="Script" uid="uid://bqic8sqg4gmla" path="res://src/entities/enemy/enemy.gd" id="1_vg1v2"]
+[ext_resource type="PackedScene" uid="uid://cacdkki3e48xr" path="res://src/effects/smoke_effect.tscn" id="2_0wpy6"]
 [ext_resource type="Texture2D" uid="uid://m1s67wr0a15k" path="res://assets/shadow.png" id="2_y6j3k"]
 [ext_resource type="Texture2D" uid="uid://tvswelausylq" path="res://assets/chef.png" id="2_yu70o"]
 [ext_resource type="Script" uid="uid://k8yocm51qn8r" path="res://src/components/hurtbox_component.gd" id="3_w1tau"]
@@ -132,6 +133,7 @@ _data = {
 [node name="Enemy" type="CharacterBody2D" unique_id=727386105]
 script = ExtResource("1_vg1v2")
 speed = 100.0
+smoke_scene = ExtResource("2_0wpy6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1274518723]
 shape = SubResource("RectangleShape2D_sn2t0")
@@ -174,9 +176,9 @@ script = ExtResource("4_yu70o")
 wait_time = 5.0
 one_shot = true
 
-[node name="SpriteFlash" type="Node" parent="." unique_id=1305011682 node_paths=PackedStringArray("sprite")]
+[node name="SpriteFlash" type="Node" parent="." unique_id=1305011682 node_paths=PackedStringArray("target")]
 script = ExtResource("7_gdlib")
-sprite = NodePath("../AnimatedSprite2D")
+target = NodePath("../AnimatedSprite2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=320610972]
 libraries/ = SubResource("AnimationLibrary_gdlib")

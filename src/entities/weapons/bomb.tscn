@@ -5,6 +5,7 @@
 [ext_resource type="Shape2D" uid="uid://cavw0pl23kcvo" path="res://resources/collision_shapes/big_bomb.tres" id="2_h86xt"]
 [ext_resource type="Shape2D" uid="uid://0bbaeadbiefs" path="res://resources/collision_shapes/bomb.tres" id="3_2ys6l"]
 [ext_resource type="Texture2D" uid="uid://ddpnt8tf8f0xh" path="res://assets/explosion.png" id="3_j0gib"]
+[ext_resource type="AudioStream" uid="uid://cvngie83ur3ms" path="res://assets/sounds/explosion.wav" id="6_qmlnx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qmlnx"]
 atlas = ExtResource("3_j0gib")
@@ -93,3 +94,7 @@ metadata/_custom_type_script = "uid://cpcfjc7p1nry1"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1233137163]
 shape = ExtResource("3_2ys6l")
 debug_color = Color(0.99999994, 0.0065831314, 0.07816311, 0.41960785)
+
+[node name="BombSound" type="AudioStreamPlayer2D" parent="." unique_id=722092259]
+stream = ExtResource("6_qmlnx")
+autoplay = true

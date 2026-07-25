@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://gq5mvkfr8dag" path="res://src/entities/microwave/microwave.gd" id="1_26k0w"]
 [ext_resource type="Texture2D" uid="uid://jqhloiy1iq61" path="res://assets/microwave.png" id="2_h2un8"]
+[ext_resource type="AudioStream" uid="uid://dpvasn3wisfgy" path="res://assets/sounds/ding.wav" id="3_38xgv"]
+[ext_resource type="AudioStream" uid="uid://c6lkq60dxribo" path="res://assets/sounds/close.wav" id="4_ynulj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_38xgv"]
 atlas = ExtResource("2_h2un8")
@@ -117,3 +119,10 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2141933101]
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_215gw")
+
+[node name="DingSound" type="AudioStreamPlayer2D" parent="." unique_id=864738101]
+process_mode = 3
+stream = ExtResource("3_38xgv")
+
+[node name="CloseSound" type="AudioStreamPlayer2D" parent="." unique_id=395832513]
+stream = ExtResource("4_ynulj")

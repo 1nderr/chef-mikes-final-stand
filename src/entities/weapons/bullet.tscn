@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d6wp6okwnrd8" path="res://src/entities/weapons/bullet.gd" id="1_wu4d6"]
 [ext_resource type="Texture2D" uid="uid://cvsf8xbjycpgl" path="res://assets/knife.png" id="2_wu4d6"]
 [ext_resource type="Script" uid="uid://cpcfjc7p1nry1" path="res://src/components/hitbox_component.gd" id="3_v0ta4"]
+[ext_resource type="AudioStream" uid="uid://ca1vs5fkv0opr" path="res://assets/sounds/knife.wav" id="4_vobgs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn2t0"]
 size = Vector2(12, 12)
@@ -48,3 +49,8 @@ script = ExtResource("3_v0ta4")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_215gw")
 debug_color = Color(0.99552256, 0, 0.21176422, 0.41960785)
+
+[node name="KnifeSound" type="AudioStreamPlayer2D" parent="." unique_id=1346391834]
+stream = ExtResource("4_vobgs")
+volume_db = -10.0
+autoplay = true

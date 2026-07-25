@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c2c725vhnk58h"]
+
+[ext_resource type="Script" uid="uid://br7uekojv6dx5" path="res://src/effects/sprite_flash.gd" id="1_0mv03"]
+[ext_resource type="Script" uid="uid://c6l2jbvuvi1au" path="res://src/ui/hud/ice_panel.gd" id="1_mr0we"]
+
+[node name="IcePanel" type="ColorRect" unique_id=935659179]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.35686275, 0.43137255, 0.88235295, 1)
+script = ExtResource("1_mr0we")
+
+[node name="SpriteFlash" type="Node" parent="." unique_id=1731919485 node_paths=PackedStringArray("target")]
+script = ExtResource("1_0mv03")
+target = NodePath("..")
+flash_color = Color(0.35686275, 0.43137255, 0.88235295, 1)
+is_overlay = true
+metadata/_custom_type_script = "uid://br7uekojv6dx5"

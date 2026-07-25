@@ -2,6 +2,7 @@ class_name Enemy
 extends CharacterBody2D
 
 @export var speed = 50.0
+@export var smoke_scene: PackedScene
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Hitbox = $Hitbox
@@ -43,6 +44,9 @@ func _on_hurt(_hitbox: Hitbox) -> void:
 
 
 func _on_died() -> void:
+	var smoke = smoke_scene.instantiate() as Node2D
+	smoke.global_position = global_position
+	get_tree().current_scene.add_child(smoke)
 	queue_free()
 
 
