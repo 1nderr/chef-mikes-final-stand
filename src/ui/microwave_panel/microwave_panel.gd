@@ -8,7 +8,9 @@ extends Control
 
 
 func _ready() -> void:
-	get_tree().paused = true
+	# Start in play mode; the first choice opens when the opening cook finishes.
+	visible = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	SignalBus.microwave_done.connect(_on_microwave_done)
 	pizza_button.mouse_entered.connect(_on_pizza_button_mouse_entered)
 	popcorn_button.mouse_entered.connect(_on_popcorn_button_mouse_entered)
@@ -23,11 +25,11 @@ func _on_microwave_done(_item: Microwave.Item) -> void:
 
 
 func _on_pizza_button_mouse_entered() -> void:
-	label.text = "Pizza Disc\nSlices through\nCook Time: " + str(pizza_button.wait_time)
+	label.text = "Pizza Disc\nOne shot, Slices through\nCook Time: " + str(pizza_button.wait_time)
 
 
 func _on_popcorn_button_mouse_entered() -> void:
-	label.text = "Popcorn Bomb\nBlasts enemies\nCook Time: " + str(popcorn_button.wait_time)
+	label.text = "Popcorn Bomb\n2 dmg, Big radius\nCook Time: " + str(popcorn_button.wait_time)
 
 
 func _on_icecream_button_mouse_entered() -> void:

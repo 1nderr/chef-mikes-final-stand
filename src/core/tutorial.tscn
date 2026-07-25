@@ -179,7 +179,7 @@ offset_top = 8.0
 offset_right = 258.0
 offset_bottom = 31.0
 text = "Throws a Pizza Disc in the direction of the 
-reticle that slices through all enemies"
+reticle that one shots all enemies"
 label_settings = SubResource("LabelSettings_ksjn8")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ItemTextures" unique_id=1167824747]
@@ -203,7 +203,7 @@ offset_top = 9.333334
 offset_right = 243.0
 offset_bottom = 32.333336
 text = "Throws a bomb at the position of the reticle
-that hits all enemies in a radius"
+that deals 2 dmg to all enemies in radius"
 label_settings = SubResource("LabelSettings_ksjn8")
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ItemTextures" unique_id=1534812357]

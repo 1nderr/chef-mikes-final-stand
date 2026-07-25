@@ -12,6 +12,7 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
+	GameManager.grant_powerup(item)
 	SignalBus.microwave_start.emit(item, wait_time)
 	owner.visible = false
 	get_tree().paused = false

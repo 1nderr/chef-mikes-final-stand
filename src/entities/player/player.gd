@@ -26,7 +26,6 @@ func _ready() -> void:
 	hurtbox.hurt.connect(_on_hurt)
 	health_component.died.connect(_on_died)
 	cooldown_timer.timeout.connect(_on_cooldown_timer_timeout)
-	SignalBus.microwave_done.connect(_on_microwave_done)
 	SignalBus.healed.connect(_on_healed)
 	SignalBus.slow_done.connect(_on_slow_done)
 	SignalBus.microwave_start.connect(_on_microwave_start)
@@ -118,10 +117,3 @@ func _spawn_heart() -> void:
 	owner.add_child(heart)
 
 
-func _on_microwave_done(item: Microwave.Item) -> void:
-	if item == Microwave.Item.BOMB:
-		GameManager.bombs += 1
-	elif item == Microwave.Item.SLOW:
-		GameManager.slows += 1
-	elif item == Microwave.Item.DISC:
-		GameManager.discs += 1

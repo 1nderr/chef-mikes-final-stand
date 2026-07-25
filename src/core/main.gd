@@ -10,6 +10,8 @@ const WaveWarningScript := preload("res://src/ui/hud/wave_warning.gd")
 
 
 func _ready() -> void:
+	# reload_current_scene() doesn't clear a leftover pause from the end screen.
+	get_tree().paused = false
 	GameManager.reset()
 	SignalBus.gameover.connect(_on_gameover)
 	SignalBus.player_died.connect(_on_player_died)

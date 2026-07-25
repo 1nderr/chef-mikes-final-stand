@@ -24,6 +24,7 @@ font = ExtResource("4_efraj")
 font_size = 6
 
 [node name="Item Display" type="Control" unique_id=872636647]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -94,15 +95,15 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Counts" unique_id=2105174656]
 layout_mode = 2
-text = "1"
+text = "0"
 label_settings = SubResource("LabelSettings_d2nav")
 
 [node name="Label2" type="Label" parent="Counts" unique_id=175350089]
 layout_mode = 2
-text = "1"
+text = "0"
 label_settings = SubResource("LabelSettings_d2nav")
 
 [node name="Label3" type="Label" parent="Counts" unique_id=1369747806]
 layout_mode = 2
-text = "1"
+text = "0"
 label_settings = SubResource("LabelSettings_d2nav")
