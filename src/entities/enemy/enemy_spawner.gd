@@ -19,6 +19,8 @@ func _ready() -> void:
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	spawn_timer.start()
 
+	slow_timer.timeout.connect(_on_slow_timer_timeout)
+
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_timer.wait_time = randf_range(min_spawn_time, max_spawn_time)
@@ -27,6 +29,15 @@ func _on_spawn_timer_timeout() -> void:
 	var enemy = enemy_scene.instantiate() as Enemy
 
 	enemy.global_position = global_position
+
+	var i := randi_range(1, 10)
+	if i == 1:
+		enemy.color = "red"
+		enemy.hp = 3
+	elif i == 2 or i == 3:
+		enemy.color = "purple"
+		enemy.hp = 2
+
 	owner.add_child(enemy)
 	if slow_timer.is_stopped():
 		return
@@ -40,6 +51,7 @@ func _on_player_died() -> void:
 func _on_slow_timer_timeout() -> void:
 	if spawn_timer.is_stopped():
 		spawn_timer.start()
+	SignalBus.slow_done.emit()
 	_time_scale = 1.0
 
 

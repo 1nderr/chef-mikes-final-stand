@@ -2,12 +2,16 @@ class_name Enemy
 extends CharacterBody2D
 
 @export var speed = 50.0
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Hitbox = $Hitbox
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var slow_timer: Timer = $SlowTimer
 
 var _time_scale = 1.0
+var color = "white"
+var hp = 1
 
 
 func _ready() -> void:
@@ -16,6 +20,9 @@ func _ready() -> void:
 	health_component.died.connect(_on_died)
 	slow_timer.timeout.connect(_on_slow_timer_timeout)
 	SignalBus.slow_applied.connect(_on_slow_applied)
+	sprite.play(color)
+	health_component.max_hp = hp
+	health_component.heal(hp)
 
 
 func _physics_process(_delta: float) -> void:
@@ -44,16 +51,19 @@ func _on_hit(_hurtbox: Hurtbox) -> void:
 func _on_slow_timer_timeout() -> void:
 	_time_scale = 1.0
 	slow_timer.wait_time = 5
+	sprite.play(color)
 
 
 func _on_slow_applied(time_scale: float) -> void:
 	_time_scale = time_scale
+	sprite.play("slow")
 	slow_timer.start()
 
 
 func apply_slow(time_scale: float, wait_time: float) -> void:
 	if time_scale == 1:
 		return
+	sprite.play("slow")
 	_time_scale = time_scale
 	slow_timer.wait_time = wait_time
 	slow_timer.start()

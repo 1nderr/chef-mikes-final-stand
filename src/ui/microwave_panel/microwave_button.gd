@@ -15,6 +15,7 @@ func _on_pressed() -> void:
 	SignalBus.microwave_start.emit(item, wait_time)
 	owner.visible = false
 	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 func _on_mouse_entered() -> void:

@@ -12,6 +12,7 @@ size = Vector2(5, 10)
 
 [node name="Bullet" type="AnimatableBody2D" unique_id=1575048941]
 z_index = 1
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_wu4d6")
 speed = 250.0
 

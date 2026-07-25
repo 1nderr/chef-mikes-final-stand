@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func _on_microwave_done(_item: Microwave.Item) -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().set_deferred("paused", true)
 	set_deferred("visible", true)
 	label.text = "Select Food"

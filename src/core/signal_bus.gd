@@ -8,3 +8,4 @@ signal microwave_mouse_entered
 signal microwave_mouse_exited
 signal health_updated(health: int)
 signal healed
+signal slow_done

@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bod7knjmw4y2l"]
+
+[ext_resource type="Script" uid="uid://bchsnmb7oyn7g" path="res://src/entities/weapons/disc.gd" id="1_dj7jj"]
+[ext_resource type="Script" uid="uid://cpcfjc7p1nry1" path="res://src/components/hitbox_component.gd" id="1_slwqu"]
+[ext_resource type="Texture2D" uid="uid://d3c1qfmwyriga" path="res://assets/pizza.png" id="2_dj7jj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sn2t0"]
+radius = 16.03122
+
+[sub_resource type="Animation" id="Animation_mxvwu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_iyjmh"]
+resource_name = "spin"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tngel"]
+_data = {
+&"RESET": SubResource("Animation_mxvwu"),
+&"spin": SubResource("Animation_iyjmh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_215gw"]
+
+[node name="Disc" type="AnimatableBody2D" unique_id=1955537208]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_dj7jj")
+speed = 350.0
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1871799435]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_slwqu")
+damage = 10
+metadata/_custom_type_script = "uid://cpcfjc7p1nry1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=728632131]
+shape = SubResource("CircleShape2D_sn2t0")
+debug_color = Color(0.998787, 0, 0.14486155, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=487753771]
+texture = ExtResource("2_dj7jj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1832952357]
+libraries/ = SubResource("AnimationLibrary_tngel")
+autoplay = &"spin"
+speed_scale = 2.0
+
+[node name="VisibleNotifiers" type="Node2D" parent="." unique_id=1761345641]
+position = Vector2(-17, -5)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="VisibleNotifiers" unique_id=521469718]
+position = Vector2(32, -17)
+rect = Rect2(0, 4, 2, 1)
+
+[node name="VisibleOnScreenNotifier2D2" type="VisibleOnScreenNotifier2D" parent="VisibleNotifiers" unique_id=1214509552]
+position = Vector2(2, -21)
+rect = Rect2(-2, 8, 1, 1)
+
+[node name="VisibleOnScreenNotifier2D3" type="VisibleOnScreenNotifier2D" parent="VisibleNotifiers" unique_id=1343961475]
+position = Vector2(8, -19)
+rect = Rect2(8, 6, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=426435456]
+shape = SubResource("CircleShape2D_215gw")
+disabled = true

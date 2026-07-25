@@ -48,7 +48,7 @@ position = Vector2(0, -100)
 [node name="Spawners" type="Node2D" parent="." unique_id=179981587]
 
 [node name="EnemySpawner" parent="Spawners" unique_id=737043293 instance=ExtResource("4_x62ka")]
-position = Vector2(-99, 91)
+position = Vector2(-156, 91)
 
 [node name="EnemySpawner3" parent="Spawners" unique_id=1104723305 instance=ExtResource("4_x62ka")]
 position = Vector2(154, 90)

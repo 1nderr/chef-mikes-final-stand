@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://d2dl27hml1ywm" path="res://src/entities/weapons/bomb.tscn" id="3_oih67"]
 [ext_resource type="PackedScene" uid="uid://twbhf8x0f3g8" path="res://src/effects/heart_particle.tscn" id="4_4f0qm"]
 [ext_resource type="Texture2D" uid="uid://m1s67wr0a15k" path="res://assets/shadow.png" id="4_eb65w"]
+[ext_resource type="PackedScene" uid="uid://bod7knjmw4y2l" path="res://src/entities/weapons/disc.tscn" id="4_kc3pt"]
 [ext_resource type="Texture2D" uid="uid://tvswelausylq" path="res://assets/chef.png" id="4_oih67"]
 [ext_resource type="Script" uid="uid://k8yocm51qn8r" path="res://src/components/hurtbox_component.gd" id="5_0mfjg"]
+[ext_resource type="Texture2D" uid="uid://cisdqq0hous3m" path="res://assets/flash.png" id="6_3c4mh"]
 [ext_resource type="Script" uid="uid://cdml4ejpp07ir" path="res://src/components/health_component.gd" id="6_oih67"]
 [ext_resource type="PackedScene" uid="uid://40rnevpko15f" path="res://src/entities/weapons/bomb_aim.tscn" id="7_n7e5a"]
 [ext_resource type="Script" uid="uid://ci0ye7vciwb0m" path="res://src/entities/weapons/bomb_aim.gd" id="8_kc3pt"]
@@ -30,12 +32,103 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn2t0"]
 size = Vector2(10, 12)
 
+[sub_resource type="Animation" id="Animation_p2qdy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lqdhu"]
+resource_name = "swag"
+length = 0.033333335
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t8d2k"]
+_data = {
+&"RESET": SubResource("Animation_p2qdy"),
+&"flash": SubResource("Animation_lqdhu")
+}
+
 [node name="Player" type="Node2D" unique_id=1572185499 groups=["player"]]
 z_index = 2
 script = ExtResource("1_muk8e")
 bullet_scene = ExtResource("2_wrxq6")
 bomb_scene = ExtResource("3_oih67")
+disc_scene = ExtResource("4_kc3pt")
 heart_scene = ExtResource("4_4f0qm")
+
+[node name="Flash" type="Sprite2D" parent="." unique_id=456677604]
+visible = false
+position = Vector2(0, -9)
+texture = ExtResource("6_3c4mh")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=1810420793]
 modulate = Color(0, 0, 0, 1)
@@ -44,6 +137,7 @@ position = Vector2(0, 7)
 texture = ExtResource("4_eb65w")
 
 [node name="AimLine" parent="." unique_id=381144997 instance=ExtResource("1_vt6n5")]
+visible = false
 
 [node name="BombAim" parent="." unique_id=1436436697 instance=ExtResource("7_n7e5a")]
 position = Vector2(0, 46)
@@ -64,9 +158,12 @@ shape = SubResource("RectangleShape2D_sn2t0")
 debug_color = Color(0.114793606, 0.6490636, 0, 0.41960785)
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=443058346]
-wait_time = 0.25
+wait_time = 0.1
 one_shot = true
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1277235068]
 script = ExtResource("6_oih67")
 max_hp = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1732927990]
+libraries/ = SubResource("AnimationLibrary_t8d2k")
