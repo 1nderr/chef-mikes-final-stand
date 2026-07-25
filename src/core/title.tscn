@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://1br2xti8dfaf"]
+
+[ext_resource type="Texture2D" uid="uid://c44pcdym44nei" path="res://assets/title_screen.png" id="1_cchgs"]
+[ext_resource type="Script" uid="uid://qnuoiok75p0e" path="res://src/core/title.gd" id="1_ou1hj"]
+[ext_resource type="FontFile" uid="uid://dpebm1j1mxeda" path="res://assets/Kenney Future Narrow.ttf" id="2_sidtw"]
+[ext_resource type="AudioStream" uid="uid://dpvasn3wisfgy" path="res://assets/sounds/ding.wav" id="3_sidtw"]
+[ext_resource type="AudioStream" uid="uid://be4060ll7stx" path="res://assets/sounds/hum.wav" id="3_xq2al"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xq2al"]
+line_spacing = 0.0
+font = ExtResource("2_sidtw")
+font_size = 14
+font_color = Color(0.29411766, 0.69411767, 0.18431373, 1)
+
+[sub_resource type="Animation" id="Animation_40ll3"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ou1hj"]
+resource_name = "fade_in"
+
+[sub_resource type="Animation" id="Animation_x4l6e"]
+resource_name = "fade_out"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_to_main"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40ll3"]
+_data = {
+&"RESET": SubResource("Animation_40ll3"),
+&"fade_in": SubResource("Animation_ou1hj"),
+&"fade_out": SubResource("Animation_x4l6e")
+}
+
+[node name="Title" type="Node2D" unique_id=263962794]
+script = ExtResource("1_ou1hj")
+
+[node name="Menu" type="CanvasLayer" parent="." unique_id=327237828]
+
+[node name="TextureRect" type="TextureRect" parent="Menu" unique_id=1806485793]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_cchgs")
+
+[node name="Label" type="Label" parent="Menu" unique_id=1618870001]
+offset_left = 125.0
+offset_top = 66.0
+offset_right = 235.0
+offset_bottom = 105.0
+text = "Chef Mike's
+Final Stand"
+label_settings = SubResource("LabelSettings_xq2al")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Menu" unique_id=13227938]
+offset_left = 132.0
+offset_top = 118.0
+offset_right = 225.0
+offset_bottom = 149.0
+theme_override_fonts/font = ExtResource("2_sidtw")
+text = "Start"
+
+[node name="HumSound" type="AudioStreamPlayer2D" parent="." unique_id=1600501527]
+stream = ExtResource("3_xq2al")
+volume_db = 15.0
+autoplay = true
+
+[node name="DingSound" type="AudioStreamPlayer2D" parent="." unique_id=121446415]
+stream = ExtResource("3_sidtw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=239942239]
+libraries/ = SubResource("AnimationLibrary_40ll3")
+autoplay = &"fade_in"

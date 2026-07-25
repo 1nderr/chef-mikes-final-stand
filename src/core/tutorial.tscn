@@ -1,0 +1,287 @@
+[gd_scene format=3 uid="uid://dhnyufdobuqls"]
+
+[ext_resource type="Texture2D" uid="uid://cl7hgk7ckybs4" path="res://assets/title_bg.png" id="1_6kh7n"]
+[ext_resource type="Script" uid="uid://cgaj1ja4eole7" path="res://src/core/tutorial.gd" id="1_mrna7"]
+[ext_resource type="Texture2D" uid="uid://d3c1qfmwyriga" path="res://assets/pizza.png" id="2_ke0pc"]
+[ext_resource type="Texture2D" uid="uid://bngx1r5fyt831" path="res://assets/numkeys.png" id="3_n3ffg"]
+[ext_resource type="FontFile" uid="uid://dpebm1j1mxeda" path="res://assets/Kenney Future Narrow.ttf" id="4_ys3hl"]
+[ext_resource type="Texture2D" uid="uid://cift7ec0kr5kv" path="res://assets/popcorn.png" id="5_mrna7"]
+[ext_resource type="Texture2D" uid="uid://dmfi7cypjrfi2" path="res://assets/icecream.png" id="6_0pfr7"]
+[ext_resource type="Texture2D" uid="uid://bp5f3d0aq272" path="res://assets/mouse.png" id="7_n3ffg"]
+[ext_resource type="Texture2D" uid="uid://jqhloiy1iq61" path="res://assets/microwave.png" id="8_ys3hl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2uv4"]
+atlas = ExtResource("3_n3ffg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ksjn8"]
+font = ExtResource("4_ys3hl")
+font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gc1ob"]
+atlas = ExtResource("3_n3ffg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps0mh"]
+atlas = ExtResource("3_n3ffg")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ys3hl"]
+font = ExtResource("4_ys3hl")
+font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38xgv"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynulj"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(32, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2un8"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7g1u"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(32, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v04k0"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(64, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1mje"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(96, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cjw3"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(128, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5eji"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(160, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm7yt"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(192, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te2l8"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(224, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5e04q"]
+atlas = ExtResource("8_ys3hl")
+region = Rect2(256, 0, 32, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mrna7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38xgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynulj")
+}],
+"loop": 1,
+"name": &"flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2un8")
+}],
+"loop": 0,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7g1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v04k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1mje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cjw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5eji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm7yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te2l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e04q")
+}],
+"loop": 1,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mrna7"]
+font = ExtResource("4_ys3hl")
+font_size = 8
+
+[node name="Tutorial" type="Node2D" unique_id=290481481]
+script = ExtResource("1_mrna7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1237462818]
+layer = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1782389486]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_6kh7n")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=965763052]
+offset_right = 256.0
+offset_bottom = 224.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7882353)
+
+[node name="ItemTextures" type="VBoxContainer" parent="CanvasLayer" unique_id=428505546]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 29.999998
+offset_top = 128.99998
+offset_right = -194.0
+offset_bottom = 20.999985
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemTextures" unique_id=1934511310]
+layout_mode = 2
+texture = ExtResource("2_ke0pc")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemTextures/TextureRect" unique_id=1960402712]
+layout_mode = 0
+offset_left = 10.666667
+offset_top = 24.0
+offset_right = 50.666668
+offset_bottom = 64.0
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_n2uv4")
+
+[node name="Label" type="Label" parent="CanvasLayer/ItemTextures/TextureRect" unique_id=2128616997]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 8.0
+offset_right = 258.0
+offset_bottom = 31.0
+text = "Throws a Pizza Disc in the direction of the 
+reticle that slices through all enemies"
+label_settings = SubResource("LabelSettings_ksjn8")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ItemTextures" unique_id=1167824747]
+layout_mode = 2
+texture = ExtResource("5_mrna7")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemTextures/TextureRect2" unique_id=829984682]
+layout_mode = 0
+offset_left = 10.666667
+offset_top = 24.0
+offset_right = 50.666668
+offset_bottom = 64.0
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_gc1ob")
+
+[node name="Label" type="Label" parent="CanvasLayer/ItemTextures/TextureRect2" unique_id=857004641]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 9.333334
+offset_right = 243.0
+offset_bottom = 32.333336
+text = "Throws a bomb at the position of the reticle
+that hits all enemies in a radius"
+label_settings = SubResource("LabelSettings_ksjn8")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ItemTextures" unique_id=1534812357]
+layout_mode = 2
+texture = ExtResource("6_0pfr7")
+stretch_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemTextures/TextureRect3" unique_id=1936834259]
+layout_mode = 0
+offset_left = 10.666667
+offset_top = 24.0
+offset_right = 50.666668
+offset_bottom = 64.0
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_ps0mh")
+
+[node name="Label" type="Label" parent="CanvasLayer/ItemTextures/TextureRect3" unique_id=1262689131]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 12.0
+offset_right = 167.0
+offset_bottom = 35.0
+text = "Slows all enemies by 50%"
+label_settings = SubResource("LabelSettings_ksjn8")
+
+[node name="Mouse" type="Control" parent="CanvasLayer" unique_id=1815741364]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_right = 129.0
+offset_bottom = 63.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Mouse" unique_id=1216829485]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 15.0
+offset_right = 128.0
+offset_bottom = 79.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_n3ffg")
+
+[node name="Label" type="Label" parent="CanvasLayer/Mouse" unique_id=1813501570]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 19.0
+offset_right = 193.0
+offset_bottom = 42.0
+text = "Hold the left mouse 
+button to shoot"
+label_settings = SubResource("LabelSettings_ys3hl")
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1167615606]
+offset_left = 194.0
+offset_top = 197.0
+offset_right = 255.0
+offset_bottom = 223.0
+theme_override_fonts/font = ExtResource("4_ys3hl")
+text = "Start"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1686875947]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer2" unique_id=1683366091]
+position = Vector2(60, 84)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_mrna7")
+animation = &"flash"
+autoplay = "flash"
+
+[node name="Label" type="Label" parent="CanvasLayer2" unique_id=2048638580]
+offset_left = 97.0
+offset_top = 68.0
+offset_right = 230.0
+offset_bottom = 113.0
+text = "Press space bar right when 
+the microwave flashes and 
+right before it dings to gain 
+some health"
+label_settings = SubResource("LabelSettings_mrna7")
