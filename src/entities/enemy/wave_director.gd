@@ -17,15 +17,23 @@ var telegraph_time: float = 4.0
 # so a telegraphed wave never fizzles against the kill-budget gate.
 var min_remaining_for_wave: int = 18
 
+# Freeze duration, matching the enemy/spawner slow timers.
+const FREEZE_DURATION: float = 5.0
+
 var _wave_index: int = 0
 var _pending_wave: String = ""
 var _cadence_timer: Timer
 var _telegraph_timer: Timer
 
+# Tracks an active freeze so wave chefs born mid-freeze get slowed like spawner ones.
+var _time_scale: float = 1.0
+var _slow_timer: Timer
+
 
 func _ready() -> void:
 	SignalBus.player_died.connect(_on_player_died)
 	SignalBus.gameover.connect(_on_stopped)
+	SignalBus.slow_applied.connect(_on_slow_applied)
 
 	_cadence_timer = Timer.new()
 	_cadence_timer.one_shot = true
@@ -37,7 +45,21 @@ func _ready() -> void:
 	add_child(_telegraph_timer)
 	_telegraph_timer.timeout.connect(_on_telegraph_timeout)
 
+	_slow_timer = Timer.new()
+	_slow_timer.one_shot = true
+	add_child(_slow_timer)
+	_slow_timer.timeout.connect(_on_slow_timer_timeout)
+
 	_cadence_timer.start(first_wave_delay)
+
+
+func _on_slow_applied(time_scale: float) -> void:
+	_time_scale = time_scale
+	_slow_timer.start(FREEZE_DURATION)
+
+
+func _on_slow_timer_timeout() -> void:
+	_time_scale = 1.0
 
 
 func _on_cadence_timeout() -> void:
@@ -105,6 +127,8 @@ func _spawn_one(color: String, hp: int, pos: Vector2) -> void:
 	enemy.hp = hp
 	enemy.global_position = pos
 	spawn_root.add_child(enemy)
+	if not _slow_timer.is_stopped():
+		enemy.apply_slow.call_deferred(_time_scale, _slow_timer.time_left)
 
 
 func _pick_points(n: int) -> Array[Vector2]:

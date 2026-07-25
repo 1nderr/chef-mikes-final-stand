@@ -12,7 +12,10 @@ extends CharacterBody2D
 @onready var slow_timer: Timer = $SlowTimer
 @onready var sprite_flash: SpriteFlash = $SpriteFlash
 
+const SLOW_RECOVER_TIME := 0.6
+
 var _time_scale = 1.0
+var _recover_tween: Tween
 var color = "white"
 var hp = 1
 
@@ -61,21 +64,31 @@ func _on_hit(_hurtbox: Hurtbox) -> void:
 
 
 func _on_slow_timer_timeout() -> void:
-	_time_scale = 1.0
 	slow_timer.wait_time = 5
-	sprite.self_modulate = Color.WHITE
+	# Ease back to full speed (and fade the tint) instead of snapping.
+	if _recover_tween:
+		_recover_tween.kill()
+	_recover_tween = create_tween()
+	_recover_tween.set_parallel(true)
+	_recover_tween.tween_property(self, "_time_scale", 1.0, SLOW_RECOVER_TIME)
+	_recover_tween.tween_property(sprite, "self_modulate", Color.WHITE, SLOW_RECOVER_TIME)
 
 
 func _on_slow_applied(time_scale: float) -> void:
-	_time_scale = time_scale
-	sprite.self_modulate = slow_color
+	_apply_slow_visuals(time_scale)
 	slow_timer.start()
 
 
 func apply_slow(time_scale: float, wait_time: float) -> void:
 	if time_scale == 1:
 		return
-	sprite.self_modulate = slow_color
-	_time_scale = time_scale
+	_apply_slow_visuals(time_scale)
 	slow_timer.wait_time = wait_time
 	slow_timer.start()
+
+
+func _apply_slow_visuals(time_scale: float) -> void:
+	if _recover_tween:
+		_recover_tween.kill()
+	_time_scale = time_scale
+	sprite.self_modulate = slow_color
