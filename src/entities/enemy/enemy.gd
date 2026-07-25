@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var slow_timer: Timer = $SlowTimer
+@onready var sprite_flash: SpriteFlash = $SpriteFlash
 
 var _time_scale = 1.0
 var color = "white"
@@ -38,6 +39,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_hurt(_hitbox: Hitbox) -> void:
 	health_component.take_damage(_hitbox.damage)
+	sprite_flash.flash()
 
 
 func _on_died() -> void:

@@ -6,11 +6,13 @@ extends Node2D
 @export var disc_scene: PackedScene
 @export var heart_scene: PackedScene
 
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var bomb_aim: BombAim = $BombAim
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite_flash: SpriteFlash = $SpriteFlash
 
 var _can_shoot = true
 var _can_slow = true
@@ -80,6 +82,7 @@ func _on_hurt(hitbox: Hitbox) -> void:
 	GameManager.camera.screen_shake(1, 0.5)
 	health_component.take_damage(hitbox.damage)
 	SignalBus.health_updated.emit(health_component.get_hp())
+	sprite_flash.flash()
 
 
 func _on_healed() -> void:

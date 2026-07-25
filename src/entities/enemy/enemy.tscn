@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://k8yocm51qn8r" path="res://src/components/hurtbox_component.gd" id="3_w1tau"]
 [ext_resource type="Script" uid="uid://cpcfjc7p1nry1" path="res://src/components/hitbox_component.gd" id="3_yu70o"]
 [ext_resource type="Script" uid="uid://cdml4ejpp07ir" path="res://src/components/health_component.gd" id="4_yu70o"]
+[ext_resource type="Script" uid="uid://br7uekojv6dx5" path="res://src/effects/sprite_flash.gd" id="7_gdlib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn2t0"]
 
@@ -172,6 +173,10 @@ script = ExtResource("4_yu70o")
 [node name="SlowTimer" type="Timer" parent="." unique_id=1793350190]
 wait_time = 5.0
 one_shot = true
+
+[node name="SpriteFlash" type="Node" parent="." unique_id=1305011682 node_paths=PackedStringArray("sprite")]
+script = ExtResource("7_gdlib")
+sprite = NodePath("../AnimatedSprite2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=320610972]
 libraries/ = SubResource("AnimationLibrary_gdlib")
