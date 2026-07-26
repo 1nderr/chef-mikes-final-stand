@@ -65,7 +65,6 @@ offset_bottom = 150.0
 texture_normal = ExtResource("6_m70bb")
 script = ExtResource("2_qmtpd")
 item = 2
-wait_time = 10.0
 
 [node name="Label" type="Label" parent="." unique_id=14374778]
 layout_mode = 0

@@ -30,6 +30,20 @@ region = Rect2(32, 0, 16, 16)
 font = ExtResource("4_ys3hl")
 font_size = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_startn"]
+bg_color = Color(0.24, 0.6, 0.2, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_starth"]
+bg_color = Color(0.36, 0.82, 0.3, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_38xgv"]
 atlas = ExtResource("8_ys3hl")
 region = Rect2(0, 0, 32, 24)
@@ -259,11 +273,17 @@ you shoot automatically"
 label_settings = SubResource("LabelSettings_ys3hl")
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=1167615606]
-offset_left = 194.0
-offset_top = 197.0
-offset_right = 255.0
-offset_bottom = 223.0
+offset_left = 201.0
+offset_top = 202.0
+offset_right = 253.0
+offset_bottom = 219.0
+theme_override_colors/font_color = Color(1, 0.96, 0.72, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_ys3hl")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_startn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_starth")
+theme_override_styles/hover = SubResource("StyleBoxFlat_starth")
 text = "Start"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1686875947]
@@ -283,5 +303,5 @@ offset_bottom = 113.0
 text = "Press space bar right when 
 the microwave flashes and 
 you hear the microwave hum
-to gain hp"
+to gain hp. Don't click too soon!"
 label_settings = SubResource("LabelSettings_mrna7")

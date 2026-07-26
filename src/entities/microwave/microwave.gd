@@ -20,6 +20,7 @@ var is_hovered: bool = false
 var _stopped = false
 var _hum_tween: Tween
 var _suppress_close := false
+var _open_consumed := false
 
 
 func _ready() -> void:
@@ -54,8 +55,11 @@ func _process(_delta: float) -> void:
 	if sprite.animation == "on" and timer.time_left <= double_time:
 		sprite.play("flash")
 		_start_hum()
-	if sprite.animation == "flash" and timer.time_left <= double_time and Input.is_action_just_pressed("open"):
-		_grab()
+
+	if not _open_consumed and not timer.is_stopped() and Input.is_action_just_pressed("open"):
+		_open_consumed = true
+		if sprite.animation == "flash" and timer.time_left <= double_time:
+			_grab()
 
 
 func _grab() -> void:
@@ -92,6 +96,7 @@ func _on_microwave_start(item: Item, wait_time: float) -> void:
 	else:
 		close.play()
 	_item = item
+	_open_consumed = false
 	timer.wait_time = wait_time + double_time
 	timer.start()
 
