@@ -33,7 +33,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if _can_shoot and Input.is_action_pressed("shoot"):
+	if _can_shoot:
 		shoot()
 
 

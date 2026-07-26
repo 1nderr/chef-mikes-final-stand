@@ -254,8 +254,8 @@ offset_left = 95.0
 offset_top = 19.0
 offset_right = 193.0
 offset_bottom = 42.0
-text = "Hold the left mouse 
-button to shoot"
+text = "Aim with the mouse
+you shoot automatically"
 label_settings = SubResource("LabelSettings_ys3hl")
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=1167615606]
@@ -282,6 +282,6 @@ offset_right = 230.0
 offset_bottom = 113.0
 text = "Press space bar right when 
 the microwave flashes and 
-right before it dings to gain 
-some health"
+you hear the microwave hum
+to gain hp"
 label_settings = SubResource("LabelSettings_mrna7")

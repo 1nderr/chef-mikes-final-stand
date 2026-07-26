@@ -1,31 +1,26 @@
 class_name WaveDirector
 extends Node
 
-# Injects telegraphed enemy bursts on top of the baseline spawner trickle.
-# Alternates TANKS / RUSH on a learnable rhythm so cooking the counter can be planned.
 
-# Set by main.gd before add_child():
 var enemy_scene: PackedScene
 var spawn_root: Node
 var spawn_points: Array[Vector2] = []
+var microwave: Microwave
 
-# Tuning knobs.
-var first_wave_delay: float = 12.0
-var wave_interval: float = 20.0
+var first_wave_delay: float = 6.0
+var wave_interval: float = 11.0
 var telegraph_time: float = 4.0
-# Stop layering waves once the endgame (the ramp's own crescendo) takes over,
-# so a telegraphed wave never fizzles against the kill-budget gate.
 var min_remaining_for_wave: int = 18
+var no_wave_fraction: float = 1.0 / 3.0
+var flash_guard: float = 3.0
+var recheck_delay: float = 0.75
 
-# Freeze duration, matching the enemy/spawner slow timers.
 const FREEZE_DURATION: float = 5.0
 
-var _wave_index: int = 0
 var _pending_wave: String = ""
 var _cadence_timer: Timer
 var _telegraph_timer: Timer
 
-# Tracks an active freeze so wave chefs born mid-freeze get slowed like spawner ones.
 var _time_scale: float = 1.0
 var _slow_timer: Timer
 
@@ -64,12 +59,39 @@ func _on_slow_timer_timeout() -> void:
 
 func _on_cadence_timeout() -> void:
 	if GameManager.enemies_remaining <= min_remaining_for_wave:
-		return  # endgame crescendo handles the finish; no more waves
+		return
 
-	_pending_wave = "TANKS" if _wave_index % 2 == 0 else "RUSH"
-	_wave_index += 1
+	if GameManager.enemies_remaining > GameManager.enemies_total * (1.0 - no_wave_fraction):
+		_cadence_timer.start(recheck_delay)
+		return
+
+	if microwave == null or microwave.time_until_flash() < flash_guard:
+		_cadence_timer.start(recheck_delay)
+		return
+
+	if GameManager.discs <= 0 and GameManager.bombs <= 0 and GameManager.slows <= 0:
+		_cadence_timer.start(recheck_delay)
+		return
+
+	_pending_wave = _decide_wave()
 	SignalBus.wave_incoming.emit(_pending_wave)
 	_telegraph_timer.start(telegraph_time)
+
+
+func _decide_wave() -> String:
+	var has_tank_counter := GameManager.discs > 0
+	var has_rush_counter := GameManager.bombs > 0
+
+	if has_tank_counter and not has_rush_counter:
+		return "TANKS"
+	if has_rush_counter and not has_tank_counter:
+		return "RUSH"
+
+	return _coin()
+
+
+func _coin() -> String:
+	return "TANKS" if randf() < 0.5 else "RUSH"
 
 
 func _on_telegraph_timeout() -> void:
@@ -82,10 +104,8 @@ func _spawn_wave(wave_name: String) -> void:
 		return
 
 	if wave_name == "TANKS":
-		# Single-file column receding away from the player, so a disc pierces the line.
 		_spawn_column([["red", 3], ["red", 3], ["red", 3], ["purple", 2]])
 	else:
-		# Scattered swarm; they converge on the player where a bomb's AoE catches them.
 		_spawn_scatter([["white", 1], ["white", 1], ["white", 1], ["white", 1], ["white", 1],
 			["white", 1], ["white", 1], ["white", 1], ["white", 1]])
 
@@ -117,7 +137,6 @@ func _spawn_scatter(configs: Array) -> void:
 		idx += 1
 		var pos: Vector2 = origin + Vector2(randf_range(-16.0, 16.0), randf_range(-16.0, 16.0))
 		_spawn_one(cfg[0], cfg[1], pos)
-		# enemies_spawned is incremented inside _spawn_one
 
 
 func _spawn_one(color: String, hp: int, pos: Vector2) -> void:

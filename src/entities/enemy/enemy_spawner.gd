@@ -5,14 +5,11 @@ extends Marker2D
 @export var max_spawn_time: float = 5
 @export var enemy_scene: PackedScene
 
-# Difficulty ramp: interval shrinks and tough enemies grow as the order is filled.
-# Reds are kept rare here on purpose — they're the telegraphed TANK-wave threat
-# (where a disc can line them up); the ramp carries fair white/purple pressure.
 @export var late_interval_mult: float = 0.4
 @export var red_chance_early: float = 0.0
-@export var red_chance_late: float = 0.08
+@export var red_chance_late: float = 0.07
 @export var purple_chance_early: float = 0.12
-@export var purple_chance_late: float = 0.33
+@export var purple_chance_late: float = 0.28
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var slow_timer: Timer = $SlowTimer
@@ -63,7 +60,7 @@ func _on_spawn_timer_timeout() -> void:
 
 
 func _progress() -> float:
-	return clamp(1.0 - float(GameManager.enemies_remaining) / float(GameManager.ENEMIES_TOTAL), 0.0, 1.0)
+	return clamp(1.0 - float(GameManager.enemies_remaining) / float(GameManager.enemies_total), 0.0, 1.0)
 
 
 func _on_player_died() -> void:
@@ -83,5 +80,4 @@ func _on_slow_applied(time_scale: float) -> void:
 	if time_scale <= 0:
 		spawn_timer.stop()
 	elif not spawn_timer.is_stopped():
-		# Stretch the in-flight interval so spawning also slows during the freeze.
 		spawn_timer.start(spawn_timer.time_left / time_scale)

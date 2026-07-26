@@ -9,13 +9,12 @@ extends Control
 
 var _is_hovered: bool = false
 var _is_done: bool = false
+var _flash_tween: Tween
 
 
 func _ready() -> void:
 	SignalBus.microwave_start.connect(_on_microwave_start)
 	SignalBus.microwave_done.connect(_on_microwave_done)
-	#SignalBus.microwave_mouse_entered.connect(_on_microwave_mouse_entered)
-	#SignalBus.microwave_mouse_exited.connect(_on_microwave_mouse_exited)
 	timer.timeout.connect(_on_timer_timeout)
 
 
@@ -29,6 +28,21 @@ func _process(_delta: float) -> void:
 func _on_timer_timeout() -> void:
 	label.text = "00:00"
 	label.label_settings = white_label_settings
+	_start_flash()
+
+
+func _start_flash() -> void:
+	_stop_flash()
+	_flash_tween = create_tween().set_loops()
+	_flash_tween.tween_property(self, "modulate", Color.YELLOW, 0.15)
+	_flash_tween.tween_property(self, "modulate", Color.WHITE, 0.15)
+
+
+func _stop_flash() -> void:
+	if _flash_tween:
+		_flash_tween.kill()
+		_flash_tween = null
+	modulate = Color.WHITE
 
 
 func _on_microwave_mouse_entered() -> void:
@@ -44,7 +58,9 @@ func _on_microwave_start(_item: Microwave.Item, wait_time: float) -> void:
 	timer.wait_time = wait_time
 	timer.start()
 	_is_done = false
+	_stop_flash()
 
 
 func _on_microwave_done(_item: Microwave.Item) -> void:
 	_is_done = true
+	_stop_flash()

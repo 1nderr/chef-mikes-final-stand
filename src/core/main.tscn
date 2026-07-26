@@ -123,10 +123,10 @@ process_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 78.0
-offset_top = 27.0
-offset_right = 108.0
-offset_bottom = 45.0
+offset_left = 79.0
+offset_top = 44.0
+offset_right = 109.0
+offset_bottom = 62.0
 grow_horizontal = 2
 text = "100"
 label_settings = ExtResource("11_7561f")
@@ -135,10 +135,10 @@ script = ExtResource("12_x6e73")
 
 [node name="TextureRect" type="TextureRect" parent="HUD" unique_id=1207512777]
 modulate = Color(0.92556894, 0.5392308, 0.5373956, 1)
-offset_left = 234.0
-offset_top = 26.0
-offset_right = 250.0
-offset_bottom = 50.0
+offset_left = 235.00002
+offset_top = 43.0
+offset_right = 251.00002
+offset_bottom = 67.0
 scale = Vector2(0.75, 0.75)
 texture = SubResource("AtlasTexture_sn2t0")
 

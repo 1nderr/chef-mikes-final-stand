@@ -41,7 +41,7 @@ func shake(intensity: int, time: float, p_only_shake_x: bool = false) -> void:
 	active_shake_time = time
 	shake_time = 0.0
 	only_shake_x = p_only_shake_x
-	shake_decay = intensity / time  # decay exactly over the requested duration
+	shake_decay = intensity / time
 
 
 func _set_offset() -> void:

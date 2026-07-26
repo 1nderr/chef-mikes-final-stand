@@ -65,7 +65,6 @@ func _on_hit(_hurtbox: Hurtbox) -> void:
 
 func _on_slow_timer_timeout() -> void:
 	slow_timer.wait_time = 5
-	# Ease back to full speed (and fade the tint) instead of snapping.
 	if _recover_tween:
 		_recover_tween.kill()
 	_recover_tween = create_tween()
