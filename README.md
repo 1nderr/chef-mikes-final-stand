@@ -1,6 +1,6 @@
-# Chef Mike's Last Stand
+# Chef Mike's Final Stand
 
-This is a top-down "microwave-like" created for the 2026 GMTK Game Jam (theme: "Count Down") using the Godot Engine: https://is386.itch.io/chef-mikes-last-stand
+This is a top-down "microwave-like" created for the 2026 GMTK Game Jam (theme: "Count Down") using the Godot Engine: https://is386.itch.io/chef-mikes-final-stand
 
 ![Title](./docs/title.png)
 
