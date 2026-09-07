@@ -1,6 +1,6 @@
 # Chef Mike's Final Stand
 
-This is a top-down "microwave-like" created for the GMTK Game Jam 2026 (theme: "Count Down") using the Godot Engine: https://is386.itch.io/chef-mikes-final-stand
+This is a top-down "microwave-like" created for the GMTK Game Jam 2026 (theme: "Count Down") using the Godot Engine: https://1nder-games.itch.io/chef-mikes-final-stand
 
 ![Title](./docs/title.png)
 
@@ -32,7 +32,7 @@ Cook a power-up, then snatch it out right before the ding to earn a heal — but
 
 ### Programming & Art
 
-is386
+1nder
 
 ### Font
 
